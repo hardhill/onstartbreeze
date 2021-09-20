@@ -1,85 +1,122 @@
 <template>
-    <Head title="Log in" />
-
-    <BreezeValidationErrors class="mb-4" />
-
-    <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
-        {{ status }}
+    <div class="relative w-full min-h-screen bg-gray-400">
+    <div class="back"></div>
+    <div class="dark">
+      <div class="w-auto grid gap-4 grid-cols-1 place-items-center px-4">
+        <div class="w-96 md:w-80">
+          <StartLogo />
+        </div>
+        <div class="bg-gray-800 flex flex-col w-80 border border-gray-900 rounded-lg px-8 py-8 opacity-80">
+          <div class="text-white mt-1">
+            <h2 class="font-bold text-4xl">Welcome</h2>
+            <p class="font-semibold">Just enter your email and password!</p>
+          </div>
+          <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
+            {{ status }}
+          </div>
+          <form class="flex flex-col mt-10" @submit.prevent="onSubmit">
+            <div class="mb-1">
+                <label for="email" class="text-sm text-gray-400">Email</label>
+                <input
+                id="email"
+                type="email"
+                class="border rounded-lg py-3 px-3 bg-gray-700 border-gray-700 placeholder-gray-500 w-full"
+                v-model="emailValue" @blur="emailBlur"
+                >
+                <div class="text-xs text-red-400">&nbsp;{{emailError}}</div>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="text-sm text-gray-400">Password</label>
+                <input
+                id="password"
+                type="password"
+                class="border rounded-lg py-3 px-3 bg-gray-700 border-gray-700 placeholder-gray-500 w-full"
+                v-model="passValue" @blur="passBlur"
+                >
+                <div class="text-xs text-red-400">&nbsp;{{passError}}</div>
+            </div>
+            <BreezeValidationErrors class="mb-4" />
+            <button class="border border-blue-500 bg-blue-500 text-white rounded-lg py-3 font-semibold" :disabled="manyAttempts || isSubmitting" >Sign In</button>
+            <div class="text-xs text-red-400" v-if="manyAttempts">too many attempts. try it later</div>
+          </form>
+        </div>
+      </div>
     </div>
 
-    <form @submit.prevent="submit">
-        <div>
-            <BreezeLabel for="email" value="Email" />
-            <BreezeInput id="email" type="email" class="mt-1 block w-full" v-model="form.email" required autofocus autocomplete="username" />
-        </div>
-
-        <div class="mt-4">
-            <BreezeLabel for="password" value="Password" />
-            <BreezeInput id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="current-password" />
-        </div>
-
-        <div class="block mt-4">
-            <label class="flex items-center">
-                <BreezeCheckbox name="remember" v-model:checked="form.remember" />
-                <span class="ml-2 text-sm text-gray-600">Remember me</span>
-            </label>
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <Link v-if="canResetPassword" :href="route('password.request')" class="underline text-sm text-gray-600 hover:text-gray-900">
-                Forgot your password?
-            </Link>
-
-            <BreezeButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                Log in
-            </BreezeButton>
-        </div>
-    </form>
+  </div>
 </template>
-
-<script>
-import BreezeButton from '@/Components/Button.vue'
-import BreezeCheckbox from '@/Components/Checkbox.vue'
-import BreezeGuestLayout from '@/Layouts/Guest.vue'
-import BreezeInput from '@/Components/Input.vue'
-import BreezeLabel from '@/Components/Label.vue'
+<script >
+import { computed, watch,onMounted,ref } from 'vue'
+import {useField, useForm} from 'vee-validate'
+import * as yup from 'yup'
+import StartLogo from "@/components/ui/Logo.vue";
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
-import { Head, Link } from '@inertiajs/inertia-vue3';
-
+import { Inertia } from '@inertiajs/inertia';
 export default {
-    layout: BreezeGuestLayout,
-
-    components: {
-        BreezeButton,
-        BreezeCheckbox,
-        BreezeInput,
-        BreezeLabel,
-        BreezeValidationErrors,
-        Head,
-        Link,
+    components:{
+        StartLogo,
+        BreezeValidationErrors
     },
-
-    props: {
-        canResetPassword: Boolean,
-        status: String,
+    props:{
+      canResetPassword: Boolean,
+      status:String
     },
+    setup(props) {
+        const errors = ref(props)
+        const {handleSubmit, isSubmitting, submitCount} = useForm()
+        const {value:emailValue, errorMessage:emailError, handleBlur:emailBlur} = useField('email', yup.string().trim().required().email())
+        const {value:passValue, errorMessage:passError, handleBlur:passBlur} = useField('password', yup.string().trim().required())
+        const manyAttempts = computed(()=>{return submitCount.value>=3})
+        onMounted(() => {
+          console.log(Inertia.page.props)
+        }),
+        watch(manyAttempts,val=>{
+          if(val){
+            setTimeout(()=>(submitCount.value=0),3000)
+          }
+        })
+        const onSubmit = handleSubmit(async(values)=>{
+          let form = Inertia.form({
+            email:values.email,
+            password:values.password
+          })
+          form.post(route('login'),{
+                onFinish:()=>form.reset('password')
+            })
 
-    data() {
+          
+        })
         return {
-            form: this.$inertia.form({
-                email: '',
-                password: '',
-                remember: false
-            })
+          emailValue, emailError, emailBlur,
+          passValue, passError, passBlur,
+          onSubmit,
+          isSubmitting,
+          manyAttempts,
+          errors
         }
     },
-
-    methods: {
-        submit() {
-            this.form.post(this.route('login'), {
-                onFinish: () => this.form.reset('password'),
-            })
-        }
-    }
 }
 </script>
+<style scoped>
+.back {
+  position: absolute;
+  background-size: cover;
+  background-position: center;
+  background-image: url("https://images.theconversation.com/files/303322/original/file-20191124-74557-16zkcnl.jpg?ixlib=rb-1.1.0&rect=60%2C874%2C5643%2C2821&q=45&auto=format&w=2560&h=1440&fit=crop");
+  height: 100vh;
+  width: 100%;
+  background-repeat: no-repeat;
+}
+.dark {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-color: rgba(73, 66, 52, 0.657);
+  /* z-index: 1; */
+  width: 100%;
+  height: 100vh;
+}
+
+</style>
