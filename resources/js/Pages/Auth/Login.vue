@@ -49,7 +49,7 @@
 import { computed, watch,onMounted,ref } from 'vue'
 import {useField, useForm} from 'vee-validate'
 import * as yup from 'yup'
-import StartLogo from "@/components/ui/Logo.vue";
+import StartLogo from "@/Components/Logo.vue";
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
 import { Inertia } from '@inertiajs/inertia';
 export default {
