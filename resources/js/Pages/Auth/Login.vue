@@ -35,7 +35,8 @@
                 >
                 <div class="text-xs text-red-400">&nbsp;{{passError}}</div>
             </div>
-            <BreezeValidationErrors class="mb-4" />
+            <BreezeValidationErrors :errors="errors"  class="mb-3" />
+            
             <button class="border border-blue-500 bg-blue-500 text-white rounded-lg py-3 font-semibold" :disabled="manyAttempts || isSubmitting" >Sign In</button>
             <div class="text-xs text-red-400" v-if="manyAttempts">too many attempts. try it later</div>
           </form>
@@ -46,7 +47,7 @@
   </div>
 </template>
 <script >
-import { computed, watch,onMounted,ref } from 'vue'
+import { computed, watch,onMounted,ref,onUpdated } from 'vue'
 import {useField, useForm} from 'vee-validate'
 import * as yup from 'yup'
 import StartLogo from "@/Components/Logo.vue";
@@ -61,19 +62,26 @@ export default {
       canResetPassword: Boolean,
       status:String
     },
-    setup(props) {
-        const errors = ref(props)
+    setup() {
+        
         const {handleSubmit, isSubmitting, submitCount} = useForm()
         const {value:emailValue, errorMessage:emailError, handleBlur:emailBlur} = useField('email', yup.string().trim().required().email())
         const {value:passValue, errorMessage:passError, handleBlur:passBlur} = useField('password', yup.string().trim().required())
         const manyAttempts = computed(()=>{return submitCount.value>=3})
-        onMounted(() => {
-          console.log(Inertia.page.props)
-        }),
+        const errors = ref([])
+        
+        
         watch(manyAttempts,val=>{
           if(val){
             setTimeout(()=>(submitCount.value=0),3000)
           }
+        })
+        onUpdated(() => {
+          let err = Inertia.page.props.errors
+          if(Object.keys(err).length != 0){
+            errors.value = err
+          }
+          
         })
         const onSubmit = handleSubmit(async(values)=>{
           let form = Inertia.form({
@@ -81,12 +89,13 @@ export default {
             password:values.password
           })
           form.post(route('login'),{
-                onFinish:()=>form.reset('password')
+                
             })
 
           
         })
         return {
+         
           emailValue, emailError, emailBlur,
           passValue, passError, passBlur,
           onSubmit,
