@@ -47,7 +47,7 @@
   </div>
 </template>
 <script >
-import { computed, watch,onMounted,ref,onUpdated } from 'vue'
+import { computed, watch, reactive, onUpdated } from 'vue'
 import {useField, useForm} from 'vee-validate'
 import * as yup from 'yup'
 import StartLogo from "@/Components/Logo.vue";
@@ -68,8 +68,7 @@ export default {
         const {value:emailValue, errorMessage:emailError, handleBlur:emailBlur} = useField('email', yup.string().trim().required().email())
         const {value:passValue, errorMessage:passError, handleBlur:passBlur} = useField('password', yup.string().trim().required())
         const manyAttempts = computed(()=>{return submitCount.value>=3})
-        const errors = ref([])
-        
+        const errors = reactive({})
         
         watch(manyAttempts,val=>{
           if(val){
@@ -78,7 +77,7 @@ export default {
         })
         onUpdated(() => {
           let err = Inertia.page.props.errors
-          if(Object.keys(err).length != 0){
+          if(Object.keys(err).length > 0){
             errors.value = err
           }
           
@@ -95,7 +94,6 @@ export default {
           
         })
         return {
-         
           emailValue, emailError, emailBlur,
           passValue, passError, passBlur,
           onSubmit,
