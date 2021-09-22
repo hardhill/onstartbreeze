@@ -53,7 +53,7 @@
                 >
                 <div class="text-xs text-red-400">&nbsp;{{passconfError}}</div>
             </div>
-            <BreezeValidationErrors :errors="lstError"  class="mb-3" />
+            <BreezeValidationErrors class="mb-3" />
             <button class="border border-blue-500 bg-blue-500 text-white rounded-lg py-3 font-semibold" :disabled="manyAttempts || isSubmitting">Registration</button>
             <div class="text-xs text-red-400" v-if="manyAttempts">too many attempts. try it later</div>
           </form>
@@ -71,7 +71,7 @@ import StartLogo from "@/Components/Logo.vue"
 import { Inertia } from "@inertiajs/inertia"
 import { Head } from '@inertiajs/inertia-vue3'
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
-import {useError} from '@/use/useError.js'
+
 export default {
   components: {
     StartLogo,
@@ -79,21 +79,13 @@ export default {
     BreezeValidationErrors
   },
   setup() {
-    let lstError = ref([])
+    
     const {handleSubmit, isSubmitting, submitCount} = useForm()
     const {value:userValue,errorMessage:userError,handleBlur:userBlur} = useField('name',yup.string().required().min(3))
     const {value:emailValue,errorMessage:emailError,handleBlur:emailBlur} = useField('email',yup.string().trim().required().email())
     const {value:passValue,errorMessage:passError,handleBlur:passBlur} = useField('password',yup.string().trim().required().min(8))
     const {value:passconfValue,errorMessage:passconfError,handleBlur:passconfBlur} = useField('password_confirmation',yup.string().trim().required().min(8))
-    onUpdated(() => {
-          let err = Inertia.page.props.errors
-          if(Object.keys(err).length > 0){
-
-            lstError.value = useError(err)
-            console.log(lstError.value)
-          }
-          
-        })
+    
     const onSubmit = handleSubmit(async(values)=>{
       let form = Inertia.form({
             name:values.name,
@@ -118,7 +110,7 @@ export default {
       passValue, passError, passBlur,
       passconfValue, passconfError, passconfBlur,
       onSubmit, manyAttempts, isSubmitting,
-      lstError
+    
     }
   },
 }

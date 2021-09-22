@@ -1,4 +1,5 @@
 <template>
+  <Head title="Login"/>
     <div class="relative w-full min-h-screen bg-gray-400">
     <div class="back"></div>
     <div class="dark">
@@ -31,13 +32,15 @@
                 id="password"
                 type="password"
                 class="border rounded-lg py-3 px-3 bg-gray-700 border-gray-700 placeholder-gray-500 w-full"
-                v-model="passValue" @blur="passBlur"
+                v-model="passValue" @blur="passBlur" autocomplete
                 >
                 <div class="text-xs text-red-400">&nbsp;{{passError}}</div>
             </div>
-            <BreezeValidationErrors :errors="errors"  class="mb-3" />
+            <BreezeValidationErrors class="mb-3" />
             
-            <button class="border border-blue-500 bg-blue-500 text-white rounded-lg py-3 font-semibold" :disabled="manyAttempts || isSubmitting" >Sign In</button>
+            <button class="flex justify-center items-center border border-blue-500 bg-blue-500 text-white rounded-lg py-3 font-semibold" :disabled="manyAttempts || isSubmitting">
+            <span v-if="true"><Loading/></span>Sign In
+            </button>
             <div class="text-xs text-red-400" v-if="manyAttempts">too many attempts. try it later</div>
           </form>
         </div>
@@ -47,16 +50,20 @@
   </div>
 </template>
 <script >
-import { computed, watch, reactive, onUpdated } from 'vue'
+import { computed, watch, ref, onUpdated } from 'vue'
 import {useField, useForm} from 'vee-validate'
 import * as yup from 'yup'
 import StartLogo from "@/Components/Logo.vue";
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
+import Loading from '@/Components/ui/Loading.vue'
 import { Inertia } from '@inertiajs/inertia';
+import {Head} from '@inertiajs/inertia-vue3'
 export default {
     components:{
         StartLogo,
-        BreezeValidationErrors
+        BreezeValidationErrors,
+        Head,
+        Loading
     },
     props:{
       canResetPassword: Boolean,
@@ -68,26 +75,20 @@ export default {
         const {value:emailValue, errorMessage:emailError, handleBlur:emailBlur} = useField('email', yup.string().trim().required().email())
         const {value:passValue, errorMessage:passError, handleBlur:passBlur} = useField('password', yup.string().trim().required())
         const manyAttempts = computed(()=>{return submitCount.value>=3})
-        const errors = reactive({})
+        
         
         watch(manyAttempts,val=>{
           if(val){
             setTimeout(()=>(submitCount.value=0),3000)
           }
         })
-        onUpdated(() => {
-          let err = Inertia.page.props.errors
-          if(Object.keys(err).length > 0){
-            errors.value = err
-          }
-          
-        })
+        
         const onSubmit = handleSubmit(async(values)=>{
           let form = Inertia.form({
             email:values.email,
             password:values.password
           })
-          form.post(route('login'),{
+          await form.post(route('login'),{
                 
             })
 
@@ -99,7 +100,7 @@ export default {
           onSubmit,
           isSubmitting,
           manyAttempts,
-          errors
+          
         }
     },
 }
