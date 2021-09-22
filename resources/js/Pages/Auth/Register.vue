@@ -18,7 +18,7 @@
                 <input
                 id="username"
                 type="text"
-                class="border rounded-lg py-3 px-3 bg-gray-700 border-gray-700 placeholder-gray-500 w-full" autocomplete="username"
+                class="border rounded-lg py-3 px-3 bg-gray-700 border-gray-700 placeholder-gray-500 w-full" autocomplete
                 v-model="userValue" @blur="userBlur"
                 >
                 <div  class="text-xs text-red-400">&nbsp;{{userError}}</div>
@@ -38,7 +38,7 @@
                 <input
                 id="password"
                 type="password"
-                class="border rounded-lg py-3 px-3 bg-gray-700 border-gray-700 placeholder-gray-500 w-full" autocomplete="password"
+                class="border rounded-lg py-3 px-3 bg-gray-700 border-gray-700 placeholder-gray-500 w-full" autocomplete
                 v-model="passValue" @blur="passBlur"
                 >
                 <div class="text-xs text-red-400">&nbsp;{{passError}}</div>
@@ -48,12 +48,12 @@
                 <input
                 id="password_confiramtion"
                 type="password"
-                class="border rounded-lg py-3 px-3 bg-gray-700 border-gray-700 placeholder-gray-500 w-full" autocomplete="password_confirmation"
+                class="border rounded-lg py-3 px-3 bg-gray-700 border-gray-700 placeholder-gray-500 w-full" autocomplete
                 v-model="passconfValue" @blur="passconfBlur"
                 >
                 <div class="text-xs text-red-400">&nbsp;{{passconfError}}</div>
             </div>
-            <BreezeValidationErrors :errors="errors"  class="mb-3" />
+            <BreezeValidationErrors :errors="lstError"  class="mb-3" />
             <button class="border border-blue-500 bg-blue-500 text-white rounded-lg py-3 font-semibold" :disabled="manyAttempts || isSubmitting">Registration</button>
             <div class="text-xs text-red-400" v-if="manyAttempts">too many attempts. try it later</div>
           </form>
@@ -64,13 +64,14 @@
   </div>
 </template>
 <script>
-import {watch, computed, onUpdated, reactive } from "vue"
+import {watch, computed, onUpdated, ref } from "vue"
 import {useField, useForm} from 'vee-validate'
 import * as yup from 'yup'
 import StartLogo from "@/Components/Logo.vue"
 import { Inertia } from "@inertiajs/inertia"
 import { Head } from '@inertiajs/inertia-vue3'
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
+import {useError} from '@/use/useError.js'
 export default {
   components: {
     StartLogo,
@@ -78,7 +79,7 @@ export default {
     BreezeValidationErrors
   },
   setup() {
-    const errors = reactive({})
+    let lstError = ref([])
     const {handleSubmit, isSubmitting, submitCount} = useForm()
     const {value:userValue,errorMessage:userError,handleBlur:userBlur} = useField('name',yup.string().required().min(3))
     const {value:emailValue,errorMessage:emailError,handleBlur:emailBlur} = useField('email',yup.string().trim().required().email())
@@ -87,7 +88,9 @@ export default {
     onUpdated(() => {
           let err = Inertia.page.props.errors
           if(Object.keys(err).length > 0){
-            errors.value = err
+
+            lstError.value = useError(err)
+            console.log(lstError.value)
           }
           
         })
@@ -115,7 +118,7 @@ export default {
       passValue, passError, passBlur,
       passconfValue, passconfError, passconfBlur,
       onSubmit, manyAttempts, isSubmitting,
-      errors
+      lstError
     }
   },
 }
