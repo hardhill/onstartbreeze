@@ -54,7 +54,8 @@
                 <div class="text-xs text-red-400">&nbsp;{{passconfError}}</div>
             </div>
             <BreezeValidationErrors class="mb-3" />
-            <button class="border border-blue-500 bg-blue-500 text-white rounded-lg py-3 font-semibold" :disabled="manyAttempts || isSubmitting">Registration</button>
+            <button class="flex justify-center items-center border border-blue-500 bg-blue-500 text-white rounded-lg py-3 font-semibold" :disabled="manyAttempts || processing">
+            <span v-if="processing"><Loading/></span>Registration</button>
             <div class="text-xs text-red-400" v-if="manyAttempts">too many attempts. try it later</div>
           </form>
         </div>
@@ -71,12 +72,14 @@ import StartLogo from "@/Components/Logo.vue"
 import { Inertia } from "@inertiajs/inertia"
 import { Head } from '@inertiajs/inertia-vue3'
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
+import Loading from '@/Components/ui/Loading.vue'
 
 export default {
   components: {
     StartLogo,
     Head,
-    BreezeValidationErrors
+    BreezeValidationErrors,
+    Loading
   },
   setup() {
     
@@ -85,7 +88,8 @@ export default {
     const {value:emailValue,errorMessage:emailError,handleBlur:emailBlur} = useField('email',yup.string().trim().required().email())
     const {value:passValue,errorMessage:passError,handleBlur:passBlur} = useField('password',yup.string().trim().required().min(8))
     const {value:passconfValue,errorMessage:passconfError,handleBlur:passconfBlur} = useField('password_confirmation',yup.string().trim().required().min(8))
-    
+    const processing = ref(false)
+
     const onSubmit = handleSubmit(async(values)=>{
       let form = Inertia.form({
             name:values.name,
@@ -94,7 +98,12 @@ export default {
             password:values.password_confirmation
           })
           form.post(route('register'),{
-                
+                onBefore:()=>{
+                  processing.value = true
+                },
+                onFinish:()=>{
+                  processing.value = false
+                }
             })
 
     })
@@ -110,6 +119,7 @@ export default {
       passValue, passError, passBlur,
       passconfValue, passconfError, passconfBlur,
       onSubmit, manyAttempts, isSubmitting,
+      processing
     
     }
   },

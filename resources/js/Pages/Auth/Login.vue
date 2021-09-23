@@ -38,8 +38,8 @@
             </div>
             <BreezeValidationErrors class="mb-3" />
             
-            <button class="flex justify-center items-center border border-blue-500 bg-blue-500 text-white rounded-lg py-3 font-semibold" :disabled="manyAttempts || isSubmitting">
-            <span v-if="true"><Loading/></span>Sign In
+            <button class="flex justify-center items-center border border-blue-500 bg-blue-500 text-white rounded-lg py-3 font-semibold" :disabled="manyAttempts || processing">
+            <span v-if="processing"><Loading/></span>Sign In
             </button>
             <div class="text-xs text-red-400" v-if="manyAttempts">too many attempts. try it later</div>
           </form>
@@ -50,7 +50,7 @@
   </div>
 </template>
 <script >
-import { computed, watch, ref, onUpdated } from 'vue'
+import { computed, watch, ref } from 'vue'
 import {useField, useForm} from 'vee-validate'
 import * as yup from 'yup'
 import StartLogo from "@/Components/Logo.vue";
@@ -75,7 +75,7 @@ export default {
         const {value:emailValue, errorMessage:emailError, handleBlur:emailBlur} = useField('email', yup.string().trim().required().email())
         const {value:passValue, errorMessage:passError, handleBlur:passBlur} = useField('password', yup.string().trim().required())
         const manyAttempts = computed(()=>{return submitCount.value>=3})
-        
+        const processing = ref(false)
         
         watch(manyAttempts,val=>{
           if(val){
@@ -89,9 +89,15 @@ export default {
             password:values.password
           })
           await form.post(route('login'),{
-                
+                onBefore:()=>{
+                  processing.value = true
+                },
+                onFinish:(visit)=>{
+                  processing.value = false
+                }
             })
-
+       
+          
           
         })
         return {
@@ -100,7 +106,7 @@ export default {
           onSubmit,
           isSubmitting,
           manyAttempts,
-          
+          processing
         }
     },
 }

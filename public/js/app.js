@@ -19528,6 +19528,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     var manyAttempts = (0,vue__WEBPACK_IMPORTED_MODULE_1__.computed)(function () {
       return submitCount.value >= 3;
     });
+    var processing = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(false);
     (0,vue__WEBPACK_IMPORTED_MODULE_1__.watch)(manyAttempts, function (val) {
       if (val) {
         setTimeout(function () {
@@ -19547,7 +19548,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   password: values.password
                 });
                 _context.next = 3;
-                return form.post(route('login'), {});
+                return form.post(route('login'), {
+                  onBefore: function onBefore() {
+                    processing.value = true;
+                  },
+                  onFinish: function onFinish(visit) {
+                    processing.value = false;
+                  }
+                });
 
               case 3:
               case "end":
@@ -19570,7 +19578,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       passBlur: passBlur,
       onSubmit: onSubmit,
       isSubmitting: isSubmitting,
-      manyAttempts: manyAttempts
+      manyAttempts: manyAttempts,
+      processing: processing
     };
   }
 });
@@ -19591,12 +19600,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-/* harmony import */ var vee_validate__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vee-validate */ "./node_modules/vee-validate/dist/vee-validate.esm.js");
+/* harmony import */ var vee_validate__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vee-validate */ "./node_modules/vee-validate/dist/vee-validate.esm.js");
 /* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! yup */ "./node_modules/yup/es/index.js");
 /* harmony import */ var _Components_Logo_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Components/Logo.vue */ "./resources/js/Components/Logo.vue");
 /* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
 /* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
 /* harmony import */ var _Components_ValidationErrors_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Components/ValidationErrors.vue */ "./resources/js/Components/ValidationErrors.vue");
+/* harmony import */ var _Components_ui_Loading_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/Components/ui/Loading.vue */ "./resources/js/Components/ui/Loading.vue");
 
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -19612,38 +19622,41 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     StartLogo: _Components_Logo_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
     Head: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_5__.Head,
-    BreezeValidationErrors: _Components_ValidationErrors_vue__WEBPACK_IMPORTED_MODULE_6__["default"]
+    BreezeValidationErrors: _Components_ValidationErrors_vue__WEBPACK_IMPORTED_MODULE_6__["default"],
+    Loading: _Components_ui_Loading_vue__WEBPACK_IMPORTED_MODULE_7__["default"]
   },
   setup: function setup() {
-    var _useForm = (0,vee_validate__WEBPACK_IMPORTED_MODULE_7__.useForm)(),
+    var _useForm = (0,vee_validate__WEBPACK_IMPORTED_MODULE_8__.useForm)(),
         handleSubmit = _useForm.handleSubmit,
         isSubmitting = _useForm.isSubmitting,
         submitCount = _useForm.submitCount;
 
-    var _useField = (0,vee_validate__WEBPACK_IMPORTED_MODULE_7__.useField)('name', yup__WEBPACK_IMPORTED_MODULE_2__.string().required().min(3)),
+    var _useField = (0,vee_validate__WEBPACK_IMPORTED_MODULE_8__.useField)('name', yup__WEBPACK_IMPORTED_MODULE_2__.string().required().min(3)),
         userValue = _useField.value,
         userError = _useField.errorMessage,
         userBlur = _useField.handleBlur;
 
-    var _useField2 = (0,vee_validate__WEBPACK_IMPORTED_MODULE_7__.useField)('email', yup__WEBPACK_IMPORTED_MODULE_2__.string().trim().required().email()),
+    var _useField2 = (0,vee_validate__WEBPACK_IMPORTED_MODULE_8__.useField)('email', yup__WEBPACK_IMPORTED_MODULE_2__.string().trim().required().email()),
         emailValue = _useField2.value,
         emailError = _useField2.errorMessage,
         emailBlur = _useField2.handleBlur;
 
-    var _useField3 = (0,vee_validate__WEBPACK_IMPORTED_MODULE_7__.useField)('password', yup__WEBPACK_IMPORTED_MODULE_2__.string().trim().required().min(8)),
+    var _useField3 = (0,vee_validate__WEBPACK_IMPORTED_MODULE_8__.useField)('password', yup__WEBPACK_IMPORTED_MODULE_2__.string().trim().required().min(8)),
         passValue = _useField3.value,
         passError = _useField3.errorMessage,
         passBlur = _useField3.handleBlur;
 
-    var _useField4 = (0,vee_validate__WEBPACK_IMPORTED_MODULE_7__.useField)('password_confirmation', yup__WEBPACK_IMPORTED_MODULE_2__.string().trim().required().min(8)),
+    var _useField4 = (0,vee_validate__WEBPACK_IMPORTED_MODULE_8__.useField)('password_confirmation', yup__WEBPACK_IMPORTED_MODULE_2__.string().trim().required().min(8)),
         passconfValue = _useField4.value,
         passconfError = _useField4.errorMessage,
         passconfBlur = _useField4.handleBlur;
 
+    var processing = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(false);
     var onSubmit = handleSubmit( /*#__PURE__*/function () {
       var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(values) {
         var form;
@@ -19656,7 +19669,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   email: values.email,
                   password: values.password
                 }, "password", values.password_confirmation));
-                form.post(route('register'), {});
+                form.post(route('register'), {
+                  onBefore: function onBefore() {
+                    processing.value = true;
+                  },
+                  onFinish: function onFinish() {
+                    processing.value = false;
+                  }
+                });
 
               case 2:
               case "end":
@@ -19695,7 +19715,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       passconfBlur: passconfBlur,
       onSubmit: onSubmit,
       manyAttempts: manyAttempts,
-      isSubmitting: isSubmitting
+      isSubmitting: isSubmitting,
+      processing: processing
     };
   }
 });
@@ -20228,7 +20249,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "animate-spin h-5 w-5 mr-3"
+  "class": "animate-bounce h-5 w-5 mr-3"
 };
 
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
@@ -20241,7 +20262,7 @@ var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
   "stroke-linecap": "round",
   "stroke-linejoin": "round",
   "stroke-width": "2",
-  d: "M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+  d: "M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
 })], -1
 /* HOISTED */
 );
@@ -20853,8 +20874,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "mb-3"
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     "class": "flex justify-center items-center border border-blue-500 bg-blue-500 text-white rounded-lg py-3 font-semibold",
-    disabled: $setup.manyAttempts || $setup.isSubmitting
-  }, [ true ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Loading)])) : 0, _hoisted_17], 8
+    disabled: $setup.manyAttempts || $setup.processing
+  }, [$setup.processing ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Loading)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_17], 8
   /* PROPS */
   , _hoisted_15), $setup.manyAttempts ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_18, "too many attempts. try it later")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 32
   /* HYDRATE_EVENTS */
@@ -20972,6 +20993,12 @@ var _hoisted_19 = {
 };
 var _hoisted_20 = ["disabled"];
 var _hoisted_21 = {
+  key: 0
+};
+
+var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Registration");
+
+var _hoisted_23 = {
   key: 0,
   "class": "text-xs text-red-400"
 };
@@ -20984,6 +21011,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_StartLogo = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("StartLogo");
 
   var _component_BreezeValidationErrors = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("BreezeValidationErrors");
+
+  var _component_Loading = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Loading");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Head, {
     title: "Register"
@@ -21054,11 +21083,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeValidationErrors, {
     "class": "mb-3"
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    "class": "border border-blue-500 bg-blue-500 text-white rounded-lg py-3 font-semibold",
-    disabled: $setup.manyAttempts || $setup.isSubmitting
-  }, "Registration", 8
+    "class": "flex justify-center items-center border border-blue-500 bg-blue-500 text-white rounded-lg py-3 font-semibold",
+    disabled: $setup.manyAttempts || $setup.processing
+  }, [$setup.processing ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Loading)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_22], 8
   /* PROPS */
-  , _hoisted_20), $setup.manyAttempts ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_21, "too many attempts. try it later")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 32
+  , _hoisted_20), $setup.manyAttempts ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_23, "too many attempts. try it later")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 32
   /* HYDRATE_EVENTS */
   )])])])])], 64
   /* STABLE_FRAGMENT */
@@ -21641,7 +21670,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.back[data-v-a2ac2cea] {\r\n  position: absolute;\r\n  background-size: cover;\r\n  background-position: center;\r\n  background-image: url(\"https://images.theconversation.com/files/303322/original/file-20191124-74557-16zkcnl.jpg?ixlib=rb-1.1.0&rect=60%2C874%2C5643%2C2821&q=45&auto=format&w=2560&h=1440&fit=crop\");\r\n  height: 100vh;\r\n  width: 100%;\r\n  background-repeat: no-repeat;\n}\n.dark[data-v-a2ac2cea] {\r\n  position: absolute;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  background-size: cover;\r\n  background-color: rgba(73, 66, 52, 0.657);\r\n  /* z-index: 1; */\r\n  width: 100%;\r\n  height: 100vh;\n}\r\n\r\n", "",{"version":3,"sources":["webpack://./resources/js/Pages/Auth/Login.vue"],"names":[],"mappings":";AA4GA;EACE,kBAAkB;EAClB,sBAAsB;EACtB,2BAA2B;EAC3B,oMAAoM;EACpM,aAAa;EACb,WAAW;EACX,4BAA4B;AAC9B;AACA;EACE,kBAAkB;EAClB,aAAa;EACb,uBAAuB;EACvB,mBAAmB;EACnB,sBAAsB;EACtB,yCAAyC;EACzC,gBAAgB;EAChB,WAAW;EACX,aAAa;AACf","sourcesContent":["<template>\r\n  <Head title=\"Login\"/>\r\n    <div class=\"relative w-full min-h-screen bg-gray-400\">\r\n    <div class=\"back\"></div>\r\n    <div class=\"dark\">\r\n      <div class=\"w-auto grid gap-4 grid-cols-1 place-items-center px-4\">\r\n        <div class=\"w-96 md:w-80\">\r\n          <StartLogo />\r\n        </div>\r\n        <div class=\"bg-gray-800 flex flex-col w-80 border border-gray-900 rounded-lg px-8 py-8 opacity-80\">\r\n          <div class=\"text-white mt-1\">\r\n            <h2 class=\"font-bold text-4xl\">Welcome</h2>\r\n            <p class=\"font-semibold\">Just enter your email and password!</p>\r\n          </div>\r\n          <div v-if=\"status\" class=\"mb-4 font-medium text-sm text-green-600\">\r\n            {{ status }}\r\n          </div>\r\n          <form class=\"flex flex-col mt-10\" @submit.prevent=\"onSubmit\">\r\n            <div class=\"mb-1\">\r\n                <label for=\"email\" class=\"text-sm text-gray-400\">Email</label>\r\n                <input\r\n                id=\"email\"\r\n                type=\"email\"\r\n                class=\"border rounded-lg py-3 px-3 bg-gray-700 border-gray-700 placeholder-gray-500 w-full\"\r\n                v-model=\"emailValue\" @blur=\"emailBlur\"\r\n                >\r\n                <div class=\"text-xs text-red-400\">&nbsp;{{emailError}}</div>\r\n            </div>\r\n            <div class=\"mb-3\">\r\n                <label for=\"password\" class=\"text-sm text-gray-400\">Password</label>\r\n                <input\r\n                id=\"password\"\r\n                type=\"password\"\r\n                class=\"border rounded-lg py-3 px-3 bg-gray-700 border-gray-700 placeholder-gray-500 w-full\"\r\n                v-model=\"passValue\" @blur=\"passBlur\" autocomplete\r\n                >\r\n                <div class=\"text-xs text-red-400\">&nbsp;{{passError}}</div>\r\n            </div>\r\n            <BreezeValidationErrors class=\"mb-3\" />\r\n            \r\n            <button class=\"flex justify-center items-center border border-blue-500 bg-blue-500 text-white rounded-lg py-3 font-semibold\" :disabled=\"manyAttempts || isSubmitting\">\r\n            <span v-if=\"true\"><Loading/></span>Sign In\r\n            </button>\r\n            <div class=\"text-xs text-red-400\" v-if=\"manyAttempts\">too many attempts. try it later</div>\r\n          </form>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n  </div>\r\n</template>\r\n<script >\r\nimport { computed, watch, ref, onUpdated } from 'vue'\r\nimport {useField, useForm} from 'vee-validate'\r\nimport * as yup from 'yup'\r\nimport StartLogo from \"@/Components/Logo.vue\";\r\nimport BreezeValidationErrors from '@/Components/ValidationErrors.vue'\r\nimport Loading from '@/Components/ui/Loading.vue'\r\nimport { Inertia } from '@inertiajs/inertia';\r\nimport {Head} from '@inertiajs/inertia-vue3'\r\nexport default {\r\n    components:{\r\n        StartLogo,\r\n        BreezeValidationErrors,\r\n        Head,\r\n        Loading\r\n    },\r\n    props:{\r\n      canResetPassword: Boolean,\r\n      status:String\r\n    },\r\n    setup() {\r\n        \r\n        const {handleSubmit, isSubmitting, submitCount} = useForm()\r\n        const {value:emailValue, errorMessage:emailError, handleBlur:emailBlur} = useField('email', yup.string().trim().required().email())\r\n        const {value:passValue, errorMessage:passError, handleBlur:passBlur} = useField('password', yup.string().trim().required())\r\n        const manyAttempts = computed(()=>{return submitCount.value>=3})\r\n        \r\n        \r\n        watch(manyAttempts,val=>{\r\n          if(val){\r\n            setTimeout(()=>(submitCount.value=0),3000)\r\n          }\r\n        })\r\n        \r\n        const onSubmit = handleSubmit(async(values)=>{\r\n          let form = Inertia.form({\r\n            email:values.email,\r\n            password:values.password\r\n          })\r\n          await form.post(route('login'),{\r\n                \r\n            })\r\n\r\n          \r\n        })\r\n        return {\r\n          emailValue, emailError, emailBlur,\r\n          passValue, passError, passBlur,\r\n          onSubmit,\r\n          isSubmitting,\r\n          manyAttempts,\r\n          \r\n        }\r\n    },\r\n}\r\n</script>\r\n<style scoped>\r\n.back {\r\n  position: absolute;\r\n  background-size: cover;\r\n  background-position: center;\r\n  background-image: url(\"https://images.theconversation.com/files/303322/original/file-20191124-74557-16zkcnl.jpg?ixlib=rb-1.1.0&rect=60%2C874%2C5643%2C2821&q=45&auto=format&w=2560&h=1440&fit=crop\");\r\n  height: 100vh;\r\n  width: 100%;\r\n  background-repeat: no-repeat;\r\n}\r\n.dark {\r\n  position: absolute;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  background-size: cover;\r\n  background-color: rgba(73, 66, 52, 0.657);\r\n  /* z-index: 1; */\r\n  width: 100%;\r\n  height: 100vh;\r\n}\r\n\r\n</style>"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.back[data-v-a2ac2cea] {\r\n  position: absolute;\r\n  background-size: cover;\r\n  background-position: center;\r\n  background-image: url(\"https://images.theconversation.com/files/303322/original/file-20191124-74557-16zkcnl.jpg?ixlib=rb-1.1.0&rect=60%2C874%2C5643%2C2821&q=45&auto=format&w=2560&h=1440&fit=crop\");\r\n  height: 100vh;\r\n  width: 100%;\r\n  background-repeat: no-repeat;\n}\n.dark[data-v-a2ac2cea] {\r\n  position: absolute;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  background-size: cover;\r\n  background-color: rgba(73, 66, 52, 0.657);\r\n  /* z-index: 1; */\r\n  width: 100%;\r\n  height: 100vh;\n}\r\n\r\n", "",{"version":3,"sources":["webpack://./resources/js/Pages/Auth/Login.vue"],"names":[],"mappings":";AAkHA;EACE,kBAAkB;EAClB,sBAAsB;EACtB,2BAA2B;EAC3B,oMAAoM;EACpM,aAAa;EACb,WAAW;EACX,4BAA4B;AAC9B;AACA;EACE,kBAAkB;EAClB,aAAa;EACb,uBAAuB;EACvB,mBAAmB;EACnB,sBAAsB;EACtB,yCAAyC;EACzC,gBAAgB;EAChB,WAAW;EACX,aAAa;AACf","sourcesContent":["<template>\r\n  <Head title=\"Login\"/>\r\n    <div class=\"relative w-full min-h-screen bg-gray-400\">\r\n    <div class=\"back\"></div>\r\n    <div class=\"dark\">\r\n      <div class=\"w-auto grid gap-4 grid-cols-1 place-items-center px-4\">\r\n        <div class=\"w-96 md:w-80\">\r\n          <StartLogo />\r\n        </div>\r\n        <div class=\"bg-gray-800 flex flex-col w-80 border border-gray-900 rounded-lg px-8 py-8 opacity-80\">\r\n          <div class=\"text-white mt-1\">\r\n            <h2 class=\"font-bold text-4xl\">Welcome</h2>\r\n            <p class=\"font-semibold\">Just enter your email and password!</p>\r\n          </div>\r\n          <div v-if=\"status\" class=\"mb-4 font-medium text-sm text-green-600\">\r\n            {{ status }}\r\n          </div>\r\n          <form class=\"flex flex-col mt-10\" @submit.prevent=\"onSubmit\">\r\n            <div class=\"mb-1\">\r\n                <label for=\"email\" class=\"text-sm text-gray-400\">Email</label>\r\n                <input\r\n                id=\"email\"\r\n                type=\"email\"\r\n                class=\"border rounded-lg py-3 px-3 bg-gray-700 border-gray-700 placeholder-gray-500 w-full\"\r\n                v-model=\"emailValue\" @blur=\"emailBlur\"\r\n                >\r\n                <div class=\"text-xs text-red-400\">&nbsp;{{emailError}}</div>\r\n            </div>\r\n            <div class=\"mb-3\">\r\n                <label for=\"password\" class=\"text-sm text-gray-400\">Password</label>\r\n                <input\r\n                id=\"password\"\r\n                type=\"password\"\r\n                class=\"border rounded-lg py-3 px-3 bg-gray-700 border-gray-700 placeholder-gray-500 w-full\"\r\n                v-model=\"passValue\" @blur=\"passBlur\" autocomplete\r\n                >\r\n                <div class=\"text-xs text-red-400\">&nbsp;{{passError}}</div>\r\n            </div>\r\n            <BreezeValidationErrors class=\"mb-3\" />\r\n            \r\n            <button class=\"flex justify-center items-center border border-blue-500 bg-blue-500 text-white rounded-lg py-3 font-semibold\" :disabled=\"manyAttempts || processing\">\r\n            <span v-if=\"processing\"><Loading/></span>Sign In\r\n            </button>\r\n            <div class=\"text-xs text-red-400\" v-if=\"manyAttempts\">too many attempts. try it later</div>\r\n          </form>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n  </div>\r\n</template>\r\n<script >\r\nimport { computed, watch, ref } from 'vue'\r\nimport {useField, useForm} from 'vee-validate'\r\nimport * as yup from 'yup'\r\nimport StartLogo from \"@/Components/Logo.vue\";\r\nimport BreezeValidationErrors from '@/Components/ValidationErrors.vue'\r\nimport Loading from '@/Components/ui/Loading.vue'\r\nimport { Inertia } from '@inertiajs/inertia';\r\nimport {Head} from '@inertiajs/inertia-vue3'\r\nexport default {\r\n    components:{\r\n        StartLogo,\r\n        BreezeValidationErrors,\r\n        Head,\r\n        Loading\r\n    },\r\n    props:{\r\n      canResetPassword: Boolean,\r\n      status:String\r\n    },\r\n    setup() {\r\n        \r\n        const {handleSubmit, isSubmitting, submitCount} = useForm()\r\n        const {value:emailValue, errorMessage:emailError, handleBlur:emailBlur} = useField('email', yup.string().trim().required().email())\r\n        const {value:passValue, errorMessage:passError, handleBlur:passBlur} = useField('password', yup.string().trim().required())\r\n        const manyAttempts = computed(()=>{return submitCount.value>=3})\r\n        const processing = ref(false)\r\n        \r\n        watch(manyAttempts,val=>{\r\n          if(val){\r\n            setTimeout(()=>(submitCount.value=0),3000)\r\n          }\r\n        })\r\n        \r\n        const onSubmit = handleSubmit(async(values)=>{\r\n          let form = Inertia.form({\r\n            email:values.email,\r\n            password:values.password\r\n          })\r\n          await form.post(route('login'),{\r\n                onBefore:()=>{\r\n                  processing.value = true\r\n                },\r\n                onFinish:(visit)=>{\r\n                  processing.value = false\r\n                }\r\n            })\r\n       \r\n          \r\n          \r\n        })\r\n        return {\r\n          emailValue, emailError, emailBlur,\r\n          passValue, passError, passBlur,\r\n          onSubmit,\r\n          isSubmitting,\r\n          manyAttempts,\r\n          processing\r\n        }\r\n    },\r\n}\r\n</script>\r\n<style scoped>\r\n.back {\r\n  position: absolute;\r\n  background-size: cover;\r\n  background-position: center;\r\n  background-image: url(\"https://images.theconversation.com/files/303322/original/file-20191124-74557-16zkcnl.jpg?ixlib=rb-1.1.0&rect=60%2C874%2C5643%2C2821&q=45&auto=format&w=2560&h=1440&fit=crop\");\r\n  height: 100vh;\r\n  width: 100%;\r\n  background-repeat: no-repeat;\r\n}\r\n.dark {\r\n  position: absolute;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  background-size: cover;\r\n  background-color: rgba(73, 66, 52, 0.657);\r\n  /* z-index: 1; */\r\n  width: 100%;\r\n  height: 100vh;\r\n}\r\n\r\n</style>"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -21668,7 +21697,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.back[data-v-e59c811e] {\r\n  position: absolute;\r\n  background-size: cover;\r\n  background-position: center;\r\n  background-image: url(\"https://images.theconversation.com/files/303322/original/file-20191124-74557-16zkcnl.jpg?ixlib=rb-1.1.0&rect=60%2C874%2C5643%2C2821&q=45&auto=format&w=2560&h=1440&fit=crop\");\r\n  height: 100vh;\r\n  width: 100%;\r\n  background-repeat: no-repeat;\n}\n.dark[data-v-e59c811e] {\r\n  position: absolute;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  background-size: cover;\r\n  background-color: rgba(73, 66, 52, 0.657);\r\n  /* z-index: 1; */\r\n  width: 100%;\r\n  height: 100vh;\n}\r\n\r\n", "",{"version":3,"sources":["webpack://./resources/js/Pages/Auth/Register.vue"],"names":[],"mappings":";AAuHA;EACE,kBAAkB;EAClB,sBAAsB;EACtB,2BAA2B;EAC3B,oMAAoM;EACpM,aAAa;EACb,WAAW;EACX,4BAA4B;AAC9B;AACA;EACE,kBAAkB;EAClB,aAAa;EACb,uBAAuB;EACvB,mBAAmB;EACnB,sBAAsB;EACtB,yCAAyC;EACzC,gBAAgB;EAChB,WAAW;EACX,aAAa;AACf","sourcesContent":["<template>\r\n  <Head title=\"Register\" />\r\n  <div class=\"relative w-full min-h-screen bg-gray-400\">\r\n    <div class=\"back\"></div>\r\n    <div class=\"dark\">\r\n      <div class=\"w-auto grid gap-4 grid-cols-1 place-items-center px-4\">\r\n        <div class=\"w-96 md:w-80\">\r\n          <StartLogo />\r\n        </div>\r\n        <div class=\"bg-gray-800 flex flex-col w-80 border border-gray-900 rounded-lg px-8 py-8\">\r\n          <div class=\"text-white mt-1\">\r\n            <h1 class=\"font-bold text-4xl\">Welcome</h1>\r\n            <p class=\"font-semibold\">Let's create your account!</p>\r\n          </div>\r\n          <form class=\"flex flex-col mt-10\" @submit.prevent=\"onSubmit\">\r\n             <div class=\"mb-3\">\r\n                 <label for=\"username\" class=\"text-sm text-gray-400\">Username</label>\r\n                <input\r\n                id=\"username\"\r\n                type=\"text\"\r\n                class=\"border rounded-lg py-3 px-3 bg-gray-700 border-gray-700 placeholder-gray-500 w-full\" autocomplete\r\n                v-model=\"userValue\" @blur=\"userBlur\"\r\n                >\r\n                <div  class=\"text-xs text-red-400\">&nbsp;{{userError}}</div>\r\n            </div> \r\n            <div class=\"mb-3\">\r\n                <label for=\"email\" class=\"text-sm text-gray-400\">Email</label>\r\n                <input\r\n                id=\"email\"\r\n                type=\"email\"\r\n                class=\"border rounded-lg py-3 px-3 bg-gray-700 border-gray-700 placeholder-gray-500 w-full\"\r\n                v-model=\"emailValue\" @blur=\"emailBlur\"\r\n                >\r\n                <div class=\"text-xs text-red-400\">&nbsp;{{emailError}}</div>\r\n            </div>\r\n            <div class=\"mb-3\">\r\n                <label for=\"password\" class=\"text-sm text-gray-400\">Password</label>\r\n                <input\r\n                id=\"password\"\r\n                type=\"password\"\r\n                class=\"border rounded-lg py-3 px-3 bg-gray-700 border-gray-700 placeholder-gray-500 w-full\" autocomplete\r\n                v-model=\"passValue\" @blur=\"passBlur\"\r\n                >\r\n                <div class=\"text-xs text-red-400\">&nbsp;{{passError}}</div>\r\n            </div>\r\n            <div class=\"mb-3\">\r\n                <label for=\"password_confiramtion\" class=\"text-sm text-gray-400\">Confirm password</label>\r\n                <input\r\n                id=\"password_confiramtion\"\r\n                type=\"password\"\r\n                class=\"border rounded-lg py-3 px-3 bg-gray-700 border-gray-700 placeholder-gray-500 w-full\" autocomplete\r\n                v-model=\"passconfValue\" @blur=\"passconfBlur\"\r\n                >\r\n                <div class=\"text-xs text-red-400\">&nbsp;{{passconfError}}</div>\r\n            </div>\r\n            <BreezeValidationErrors class=\"mb-3\" />\r\n            <button class=\"border border-blue-500 bg-blue-500 text-white rounded-lg py-3 font-semibold\" :disabled=\"manyAttempts || isSubmitting\">Registration</button>\r\n            <div class=\"text-xs text-red-400\" v-if=\"manyAttempts\">too many attempts. try it later</div>\r\n          </form>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n  </div>\r\n</template>\r\n<script>\r\nimport {watch, computed, onUpdated, ref } from \"vue\"\r\nimport {useField, useForm} from 'vee-validate'\r\nimport * as yup from 'yup'\r\nimport StartLogo from \"@/Components/Logo.vue\"\r\nimport { Inertia } from \"@inertiajs/inertia\"\r\nimport { Head } from '@inertiajs/inertia-vue3'\r\nimport BreezeValidationErrors from '@/Components/ValidationErrors.vue'\r\n\r\nexport default {\r\n  components: {\r\n    StartLogo,\r\n    Head,\r\n    BreezeValidationErrors\r\n  },\r\n  setup() {\r\n    \r\n    const {handleSubmit, isSubmitting, submitCount} = useForm()\r\n    const {value:userValue,errorMessage:userError,handleBlur:userBlur} = useField('name',yup.string().required().min(3))\r\n    const {value:emailValue,errorMessage:emailError,handleBlur:emailBlur} = useField('email',yup.string().trim().required().email())\r\n    const {value:passValue,errorMessage:passError,handleBlur:passBlur} = useField('password',yup.string().trim().required().min(8))\r\n    const {value:passconfValue,errorMessage:passconfError,handleBlur:passconfBlur} = useField('password_confirmation',yup.string().trim().required().min(8))\r\n    \r\n    const onSubmit = handleSubmit(async(values)=>{\r\n      let form = Inertia.form({\r\n            name:values.name,\r\n            email:values.email,\r\n            password:values.password,\r\n            password:values.password_confirmation\r\n          })\r\n          form.post(route('register'),{\r\n                \r\n            })\r\n\r\n    })\r\n    const manyAttempts = computed(()=>{return submitCount.value>=3})\r\n    watch(manyAttempts,val=>{\r\n          if(val){\r\n            setTimeout(()=>(submitCount.value=0),3000)\r\n          }\r\n        })\r\n    return {\r\n      userValue, userError, userBlur,\r\n      emailValue, emailError, emailBlur,\r\n      passValue, passError, passBlur,\r\n      passconfValue, passconfError, passconfBlur,\r\n      onSubmit, manyAttempts, isSubmitting,\r\n    \r\n    }\r\n  },\r\n}\r\n</script>\r\n\r\n<style scoped>\r\n.back {\r\n  position: absolute;\r\n  background-size: cover;\r\n  background-position: center;\r\n  background-image: url(\"https://images.theconversation.com/files/303322/original/file-20191124-74557-16zkcnl.jpg?ixlib=rb-1.1.0&rect=60%2C874%2C5643%2C2821&q=45&auto=format&w=2560&h=1440&fit=crop\");\r\n  height: 100vh;\r\n  width: 100%;\r\n  background-repeat: no-repeat;\r\n}\r\n.dark {\r\n  position: absolute;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  background-size: cover;\r\n  background-color: rgba(73, 66, 52, 0.657);\r\n  /* z-index: 1; */\r\n  width: 100%;\r\n  height: 100vh;\r\n}\r\n\r\n</style>"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.back[data-v-e59c811e] {\r\n  position: absolute;\r\n  background-size: cover;\r\n  background-position: center;\r\n  background-image: url(\"https://images.theconversation.com/files/303322/original/file-20191124-74557-16zkcnl.jpg?ixlib=rb-1.1.0&rect=60%2C874%2C5643%2C2821&q=45&auto=format&w=2560&h=1440&fit=crop\");\r\n  height: 100vh;\r\n  width: 100%;\r\n  background-repeat: no-repeat;\n}\n.dark[data-v-e59c811e] {\r\n  position: absolute;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  background-size: cover;\r\n  background-color: rgba(73, 66, 52, 0.657);\r\n  /* z-index: 1; */\r\n  width: 100%;\r\n  height: 100vh;\n}\r\n\r\n", "",{"version":3,"sources":["webpack://./resources/js/Pages/Auth/Register.vue"],"names":[],"mappings":";AAiIA;EACE,kBAAkB;EAClB,sBAAsB;EACtB,2BAA2B;EAC3B,oMAAoM;EACpM,aAAa;EACb,WAAW;EACX,4BAA4B;AAC9B;AACA;EACE,kBAAkB;EAClB,aAAa;EACb,uBAAuB;EACvB,mBAAmB;EACnB,sBAAsB;EACtB,yCAAyC;EACzC,gBAAgB;EAChB,WAAW;EACX,aAAa;AACf","sourcesContent":["<template>\r\n  <Head title=\"Register\" />\r\n  <div class=\"relative w-full min-h-screen bg-gray-400\">\r\n    <div class=\"back\"></div>\r\n    <div class=\"dark\">\r\n      <div class=\"w-auto grid gap-4 grid-cols-1 place-items-center px-4\">\r\n        <div class=\"w-96 md:w-80\">\r\n          <StartLogo />\r\n        </div>\r\n        <div class=\"bg-gray-800 flex flex-col w-80 border border-gray-900 rounded-lg px-8 py-8\">\r\n          <div class=\"text-white mt-1\">\r\n            <h1 class=\"font-bold text-4xl\">Welcome</h1>\r\n            <p class=\"font-semibold\">Let's create your account!</p>\r\n          </div>\r\n          <form class=\"flex flex-col mt-10\" @submit.prevent=\"onSubmit\">\r\n             <div class=\"mb-3\">\r\n                 <label for=\"username\" class=\"text-sm text-gray-400\">Username</label>\r\n                <input\r\n                id=\"username\"\r\n                type=\"text\"\r\n                class=\"border rounded-lg py-3 px-3 bg-gray-700 border-gray-700 placeholder-gray-500 w-full\" autocomplete\r\n                v-model=\"userValue\" @blur=\"userBlur\"\r\n                >\r\n                <div  class=\"text-xs text-red-400\">&nbsp;{{userError}}</div>\r\n            </div> \r\n            <div class=\"mb-3\">\r\n                <label for=\"email\" class=\"text-sm text-gray-400\">Email</label>\r\n                <input\r\n                id=\"email\"\r\n                type=\"email\"\r\n                class=\"border rounded-lg py-3 px-3 bg-gray-700 border-gray-700 placeholder-gray-500 w-full\"\r\n                v-model=\"emailValue\" @blur=\"emailBlur\"\r\n                >\r\n                <div class=\"text-xs text-red-400\">&nbsp;{{emailError}}</div>\r\n            </div>\r\n            <div class=\"mb-3\">\r\n                <label for=\"password\" class=\"text-sm text-gray-400\">Password</label>\r\n                <input\r\n                id=\"password\"\r\n                type=\"password\"\r\n                class=\"border rounded-lg py-3 px-3 bg-gray-700 border-gray-700 placeholder-gray-500 w-full\" autocomplete\r\n                v-model=\"passValue\" @blur=\"passBlur\"\r\n                >\r\n                <div class=\"text-xs text-red-400\">&nbsp;{{passError}}</div>\r\n            </div>\r\n            <div class=\"mb-3\">\r\n                <label for=\"password_confiramtion\" class=\"text-sm text-gray-400\">Confirm password</label>\r\n                <input\r\n                id=\"password_confiramtion\"\r\n                type=\"password\"\r\n                class=\"border rounded-lg py-3 px-3 bg-gray-700 border-gray-700 placeholder-gray-500 w-full\" autocomplete\r\n                v-model=\"passconfValue\" @blur=\"passconfBlur\"\r\n                >\r\n                <div class=\"text-xs text-red-400\">&nbsp;{{passconfError}}</div>\r\n            </div>\r\n            <BreezeValidationErrors class=\"mb-3\" />\r\n            <button class=\"flex justify-center items-center border border-blue-500 bg-blue-500 text-white rounded-lg py-3 font-semibold\" :disabled=\"manyAttempts || processing\">\r\n            <span v-if=\"processing\"><Loading/></span>Registration</button>\r\n            <div class=\"text-xs text-red-400\" v-if=\"manyAttempts\">too many attempts. try it later</div>\r\n          </form>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n  </div>\r\n</template>\r\n<script>\r\nimport {watch, computed, onUpdated, ref } from \"vue\"\r\nimport {useField, useForm} from 'vee-validate'\r\nimport * as yup from 'yup'\r\nimport StartLogo from \"@/Components/Logo.vue\"\r\nimport { Inertia } from \"@inertiajs/inertia\"\r\nimport { Head } from '@inertiajs/inertia-vue3'\r\nimport BreezeValidationErrors from '@/Components/ValidationErrors.vue'\r\nimport Loading from '@/Components/ui/Loading.vue'\r\n\r\nexport default {\r\n  components: {\r\n    StartLogo,\r\n    Head,\r\n    BreezeValidationErrors,\r\n    Loading\r\n  },\r\n  setup() {\r\n    \r\n    const {handleSubmit, isSubmitting, submitCount} = useForm()\r\n    const {value:userValue,errorMessage:userError,handleBlur:userBlur} = useField('name',yup.string().required().min(3))\r\n    const {value:emailValue,errorMessage:emailError,handleBlur:emailBlur} = useField('email',yup.string().trim().required().email())\r\n    const {value:passValue,errorMessage:passError,handleBlur:passBlur} = useField('password',yup.string().trim().required().min(8))\r\n    const {value:passconfValue,errorMessage:passconfError,handleBlur:passconfBlur} = useField('password_confirmation',yup.string().trim().required().min(8))\r\n    const processing = ref(false)\r\n\r\n    const onSubmit = handleSubmit(async(values)=>{\r\n      let form = Inertia.form({\r\n            name:values.name,\r\n            email:values.email,\r\n            password:values.password,\r\n            password:values.password_confirmation\r\n          })\r\n          form.post(route('register'),{\r\n                onBefore:()=>{\r\n                  processing.value = true\r\n                },\r\n                onFinish:()=>{\r\n                  processing.value = false\r\n                }\r\n            })\r\n\r\n    })\r\n    const manyAttempts = computed(()=>{return submitCount.value>=3})\r\n    watch(manyAttempts,val=>{\r\n          if(val){\r\n            setTimeout(()=>(submitCount.value=0),3000)\r\n          }\r\n        })\r\n    return {\r\n      userValue, userError, userBlur,\r\n      emailValue, emailError, emailBlur,\r\n      passValue, passError, passBlur,\r\n      passconfValue, passconfError, passconfBlur,\r\n      onSubmit, manyAttempts, isSubmitting,\r\n      processing\r\n    \r\n    }\r\n  },\r\n}\r\n</script>\r\n\r\n<style scoped>\r\n.back {\r\n  position: absolute;\r\n  background-size: cover;\r\n  background-position: center;\r\n  background-image: url(\"https://images.theconversation.com/files/303322/original/file-20191124-74557-16zkcnl.jpg?ixlib=rb-1.1.0&rect=60%2C874%2C5643%2C2821&q=45&auto=format&w=2560&h=1440&fit=crop\");\r\n  height: 100vh;\r\n  width: 100%;\r\n  background-repeat: no-repeat;\r\n}\r\n.dark {\r\n  position: absolute;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  background-size: cover;\r\n  background-color: rgba(73, 66, 52, 0.657);\r\n  /* z-index: 1; */\r\n  width: 100%;\r\n  height: 100vh;\r\n}\r\n\r\n</style>"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
