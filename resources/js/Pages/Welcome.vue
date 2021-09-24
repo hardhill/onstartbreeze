@@ -100,7 +100,7 @@
 							c2.9-2.4,3.6-6,4.9-9.3c0.5-1.4,1-2.9,1.7-4.2c0.7-1.2,0.6-2-0.2-3C257.1,53.2,256.9,52.8,256.6,52.5z" />
             </svg>
           </div>
-          <div class="w-96 lg:h-96 flex justify-center items-center bg-map-patern">
+          <div class="w-96 lg:h-96 flex justify-center items-center" style="background-image:url('images/relief-01.svg');">
             <Link v-if="canRegister" :href="route('register')">
               <div
                 class="p-2 border-gray-700 border bg-gray-300  rounded-md hover:bg-blue-200 transition-colors duration-150"
@@ -123,11 +123,11 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from "vue"
+<script>
+import { ref } from "vue"
 import { Head, Link } from '@inertiajs/inertia-vue3';
 
-export default defineComponent({
+export default {
   name: "Home",
   components: {
     Head,
@@ -141,13 +141,5 @@ export default defineComponent({
     const changeColor = ref(true);
     return { changeColor };
   },
-});
-</script>
-<style scoped >
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;1,400;1,500&display=swap");
-.logo {
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  font-size: 3rem;
 }
-</style>
+</script>

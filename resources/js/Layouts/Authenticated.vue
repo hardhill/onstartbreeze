@@ -9,7 +9,7 @@
                             <!-- Logo -->
                             <div class="flex-shrink-0 flex items-center">
                                 <Link :href="route('dashboard')">
-                                    <BreezeApplicationLogo class="block h-9 w-auto" />
+                                     <div class="logo"><span class="text-red-600">ON</span><span>START</span></div>
                                 </Link>
                             </div>
 

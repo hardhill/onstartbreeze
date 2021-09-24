@@ -3,9 +3,12 @@
 
     <BreezeAuthenticatedLayout>
         <template #header>
+            <div class="flex justify-between items-center">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 Dashboard
             </h2>
+            <OsLinkButton href=''>Load GPX</OsLinkButton>
+            </div>
         </template>
 
         <div class="py-12">
@@ -23,11 +26,13 @@
 <script>
 import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue'
 import { Head } from '@inertiajs/inertia-vue3';
+import OsLinkButton from '@/Components/ui/OsLinkButton.vue'
 
 export default {
     components: {
         BreezeAuthenticatedLayout,
         Head,
+        OsLinkButton
     },
 }
 </script>
