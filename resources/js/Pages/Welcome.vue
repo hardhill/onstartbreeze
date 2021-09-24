@@ -18,7 +18,7 @@
       <div class="text-center text-gray-800 py-8 text-3xl sm:text-5xl sm:mb-20 font-extrabold">Running will tell you more</div>
       <div class="flex justify-center h-full">
 
-        <div class="grid lg:grid-cols-2 gap-4">
+        <div class="grid  lg:grid-cols-2 gap-14 lg:gap-2">
           <div
             class="w-96 h-96 transition-colors duration-400"
             :class="{'bg-blue-200':changeColor}"
@@ -100,10 +100,10 @@
 							c2.9-2.4,3.6-6,4.9-9.3c0.5-1.4,1-2.9,1.7-4.2c0.7-1.2,0.6-2-0.2-3C257.1,53.2,256.9,52.8,256.6,52.5z" />
             </svg>
           </div>
-          <div class="w-96 flex justify-center items-center">
+          <div class="w-96 lg:h-96 flex justify-center items-center bg-map-patern">
             <Link v-if="canRegister" :href="route('register')">
               <div
-                class="p-2 border-gray-700 border  rounded-md hover:bg-blue-200 transition-colors duration-150"
+                class="p-2 border-gray-700 border bg-gray-300  rounded-md hover:bg-blue-200 transition-colors duration-150"
                 @mouseenter="changeColor=false"
                 @mouseleave="changeColor=true"
               >Registration</div>

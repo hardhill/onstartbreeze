@@ -21397,7 +21397,7 @@ var _hoisted_7 = {
   "class": "flex justify-center h-full"
 };
 var _hoisted_8 = {
-  "class": "grid lg:grid-cols-2 gap-4"
+  "class": "grid lg:grid-cols-2 gap-14 lg:gap-2"
 };
 
 var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
@@ -21419,7 +21419,7 @@ var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 
 var _hoisted_10 = [_hoisted_9];
 var _hoisted_11 = {
-  "class": "w-96 flex justify-center items-center"
+  "class": "w-96 lg:h-96 flex justify-center items-center bg-map-patern"
 };
 
 var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("footer", {
@@ -21464,7 +21464,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-        "class": "p-2 border-gray-700 border rounded-md hover:bg-blue-200 transition-colors duration-150",
+        "class": "p-2 border-gray-700 border bg-gray-300 rounded-md hover:bg-blue-200 transition-colors duration-150",
         onMouseenter: _cache[0] || (_cache[0] = function ($event) {
           return _ctx.changeColor = false;
         }),
@@ -21725,7 +21725,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;1,400;1,500&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.logo[data-v-317d1a6e] {\n  font-family: \"Poppins\", sans-serif;\n  font-weight: 600;\n  font-size: 3rem;\n}\n", "",{"version":3,"sources":["webpack://./resources/js/Pages/Welcome.vue"],"names":[],"mappings":";AAmJA;EACE,kCAAkC;EAClC,gBAAgB;EAChB,eAAe;AACjB","sourcesContent":["<template>\n<Head title=\"Welcome\" />\n  <div>\n    <div class=\"relative min-h-screen bg-gray-100\">\n      <!-- navigation -->\n      <div class=\"container max-w-6xl mx-auto sm:py-24 lg:px-8 \">\n        <div class=\"flex justify-between items-center px-3 sm:px-8\">\n          <div class=\"logo\"><span class=\"text-red-600\">ON</span><span>START</span></div>\n          <div>\n            <Link :href=\"route('login')\">\n              <div class=\"border-double rounded hover:bg-red-600 transition-colors duration-150 hover:text-gray-100 border-2 p-2\">Sign In</div>\n            </Link>\n          </div>\n        </div>\n      </div>\n      <!-- welcome -->\n\n      <div class=\"text-center text-gray-800 py-8 text-3xl sm:text-5xl sm:mb-20 font-extrabold\">Running will tell you more</div>\n      <div class=\"flex justify-center h-full\">\n\n        <div class=\"grid lg:grid-cols-2 gap-4\">\n          <div\n            class=\"w-96 h-96 transition-colors duration-400\"\n            :class=\"{'bg-blue-200':changeColor}\"\n          >\n            <svg\n              class=\"p-4 w-96 \"\n              version=\"1.1\"\n              id=\"Layer_1\"\n              xmlns=\"http://www.w3.org/2000/svg\"\n              xmlns:xlink=\"http://www.w3.org/1999/xlink\"\n              x=\"0px\"\n              y=\"0px\"\n              viewBox=\"0 0 421.5 504.7\"\n              enable-background=\"new 0 0 421.5 504.7\"\n              xml:space=\"preserve\"\n            >\n              <path d=\"M256.6,52.5c0.3-0.5,0.5-0.9,0.8-1.3c1-1.4,0.9-2.8,0.3-4.3c-0.7-1.8-1.6-3.4-2.2-5.2c-0.6-1.9-1-3.8-1.1-5.8\n\t\t\t\t\t\t\tc-0.2-3.2-0.2-6.4,0-9.6c0.4-5.1,1.9-9.9,4.9-14c3.4-4.7,8-7.5,13.3-9.6c6.9-2.7,14.2-2.7,21.4-2.6c1.3,0,2.6,0.7,3.9,1.2\n\t\t\t\t\t\t\tc0.7,0.3,1.5,0.6,2.1,1.1c0.6,0.4,1.3,0.4,1.9,0.2c1-0.3,1.9,0,2.7,0.6c0.9,0.6,1.7,0.8,2.8,0.6c2.2-0.5,4.3,0,6,1.4\n\t\t\t\t\t\t\tc0.6,0.5,1.1,1.2,1.4,1.9c1.7,3.6,2.8,7.3,3.6,11.1c0.3,1.2,0,2.4-0.7,3.5c-0.3,0.5-0.5,1.2-0.5,1.8c0.1,1.1,0.4,2.3,0.7,3.4\n\t\t\t\t\t\t\tc0.9,3.4,1.2,6.8,1.4,10.3c0,1,0.1,2.1,0.1,3.1c0,0.9-0.2,1.5-1.2,1.9c-1.6,0.7-1.8,1.2-1.7,3c0.2,2,0.8,3.8,1.7,5.5\n\t\t\t\t\t\t\tc0.9,1.5,1.6,3.2,2.5,4.7c0.8,1.3,0.7,2.5,0.4,4c-0.9,0.2-1.8,0.5-2.7,0.7c-1,0.3-2.1,0.5-3.1,0.9c-0.8,0.3-1.2,1-1.2,1.9\n\t\t\t\t\t\t\tc0,0.9,0,1.7-0.1,2.6c-0.2,1.7-1,2.4-2.6,2.5c-0.8,0-1.6,0.1-2.3,0.2c-0.1,0-0.1,0.2-0.3,0.4c0.6,0.4,1.1,0.7,1.6,1.1\n\t\t\t\t\t\t\tc1.4,1.1,1.5,2.3,0.3,3.6c-1.1,1.1-1.5,2.4-1.4,3.9c0,0.8,0,1.7-0.2,2.5c-0.6,2-2.2,2.5-4,2.5c-2.1,0-4.2,0-6.3,0.1\n\t\t\t\t\t\t\tc-3,0.1-6,0.1-9,0.4c-1.9,0.2-3.7,0.9-4.6,2.9c-0.3,0.6-0.4,1.3-0.4,2c-0.1,2.2,0,4.4-0.2,6.6c-0.1,1.7,0.3,3.2,1,4.7\n\t\t\t\t\t\t\tc2.3,4.8,4.6,9.5,6.8,14.3c2.4,5.4,4.8,10.8,7,16.3c1.2,3.1,2,6.4,1.7,9.8c-0.4,5.1-0.5,10.2-0.9,15.3c-0.3,3.5-0.8,7-1.2,10.5\n\t\t\t\t\t\t\tc0,0.2,0,0.5,0,0.8c0.4,0.1,0.9,0.3,1.3,0.3c1,0,1.9-0.1,2.9-0.2c3.5-0.4,6.9-0.9,10.4-1.3c2.9-0.4,5.8-0.9,8.7-1.3\n\t\t\t\t\t\t\tc1.7-0.3,3.4-0.4,5-0.8c3.6-0.8,6.3-2.9,8.3-6c0.2-0.4,0.3-0.9,0.4-1.3c0.2-1.4,0.2-2.8,0.4-4.2c0.2-1.8,0.3-3.6,0.7-5.3\n\t\t\t\t\t\t\tc0.2-1,0.8-1.9,1.9-2.4c2.8-1.2,5.6-2.7,8.4-3.9c0.8-0.3,2-0.3,2.8,0c2.3,0.9,4.5,1.4,6.9,1.2c0.3,0,0.6,0,0.8,0\n\t\t\t\t\t\t\tc0.9,0,1.5,0.4,1.7,1.3c0.2,1.4,0.9,2.4,2.3,3c1.3,0.5,1.9,1.7,1.8,3.1c0,1.1,0.3,2,0.8,2.8c1.3,2,1.7,4.1,1.2,6.5\n\t\t\t\t\t\t\tc-0.2,1-0.1,1.8,0.3,2.7c0.9,2.1,0.6,3.9-1.1,5.4c-1.1,1-2.4,1.9-3.5,2.9c-2.8,2.6-6.3,4.2-9.7,5.7c-2.7,1.1-5.4,1.6-8.3,1.6\n\t\t\t\t\t\t\tc-1.1,0-2,0.3-2.9,0.9c-2.3,1.4-4.6,2.9-7.1,4c-4.1,2-8.3,3.8-12.5,5.5c-3.1,1.3-6.2,2.3-9.4,3.4c-4.2,1.4-8.3,2.7-12.5,4\n\t\t\t\t\t\t\tc-1.4,0.4-2.8,0.8-4.2,1.2c-1,0.3-1.8,0.9-2.2,1.9c-1.1,2.7-2.7,5.1-4.3,7.6c-2.5,4-4.6,8.2-5.8,12.8c-1.5,5.8-2,11.6-2,17.6\n\t\t\t\t\t\t\tc0,3.1,0,6.3,0,9.4c0,1.6-0.5,3-1.3,4.4c-0.3,0.5-0.4,1.3-0.4,2c0,0.7,0.4,1.1,1,1.2c0.8,0.1,1.6,0.2,2.3,0.3\n\t\t\t\t\t\t\tc1.5,0.2,2.6,1.6,2.5,3.1c-0.1,1,0.2,1.7,1,2.4c1,0.9,1.8,2,2.8,3c1.2,1.2,2.1,2.7,2.4,4.3c0.3,1.2,1,2,1.8,2.8\n\t\t\t\t\t\t\tc1,1.1,2.1,2.3,2.8,3.6c0.8,1.7,2.1,2.9,3.4,4c4.1,3.3,7.8,6.9,11.5,10.7c2.8,2.9,5.5,5.8,7.8,9.1c0.9,1.3,1.8,2.6,2.5,4\n\t\t\t\t\t\t\tc1.8,3.6,4.2,6.7,6.9,9.6c3.9,4.3,8,8.4,11.9,12.7c2.2,2.5,4.5,5,5.7,8.3c0.8,2.3,1.4,4.6,1.9,7c0.5,2.6,0.7,5.3,0.7,8\n\t\t\t\t\t\t\tc0,2.8,0,5.6-0.4,8.3c-0.4,2.8-0.3,5.6,0,8.3c0,0.5,0.2,0.9,0.2,1.4c0.3,5.5,1.4,10.8,2,16.2c0.4,3.5,0.6,7.1,1.2,10.6\n\t\t\t\t\t\t\tc1,6.6,0.5,13.4,1.1,20c0.2,1.7,0,3.4,0.1,5.1c0.3,4.3,0.5,8.6,0.9,12.9c0.3,3,0.7,6,1.2,9c0.5,3,1.2,5.9,1.8,8.8\n\t\t\t\t\t\t\tc0.6,2.8,1.1,5.7,1.7,8.5c0.3,1.4,0.6,2.8,0.9,4.2c0.1,0,0.2,0,0.4,0c0.1-0.4,0.3-0.8,0.4-1.2c0.7-1.5,2.1-1.8,3.1-0.5\n\t\t\t\t\t\t\tc2.5,3.1,5.9,5.1,8.9,7.6c0.8,0.7,1.6,1.4,2.5,2c0.8,0.6,1.7,1.3,2.6,1.6c4,1.2,8.1,2.5,12.2,3.5c5.8,1.4,11.7,2,17.6,2.3\n\t\t\t\t\t\t\tc2.5,0.1,5,0,7.4,0.1c2,0.1,3.9,0.8,5.6,1.8c2.5,1.5,3,4,1.1,6.2c-1.7,1.9-3.4,3.8-5.4,5.5c-1.3,1.1-2.9,1.8-4.4,2.6\n\t\t\t\t\t\t\tc-2.2,1.2-4.5,2.4-6.8,3.5c-3.6,1.7-7.2,3.4-10.9,4.9c-2,0.8-4.2,1-6.3,0.9c-3.6-0.1-7.1-0.2-10.7-0.1c-1.6,0-3.1,0.4-4.7,0.7\n\t\t\t\t\t\t\tc-3.1,0.7-6.1,1.5-9.2,2.1c-1.6,0.4-3.3,0.6-5,1c-1.8,0.4-3.6,0.8-5.5,1.1c-3,0.4-5.9,1.4-9,1c-4.4-0.6-8.5-2.1-11.4-5.6\n\t\t\t\t\t\t\tc-1.8-2.1-2.8-4.6-2.4-7.5c0-0.3,0.2-0.7,0.3-1c2.3-3.4,3.1-7.2,3.2-11.3c0.1-2.5,0.6-5.1,0.9-7.6c0.2-1.3,1.1-2.1,2.2-2.8\n\t\t\t\t\t\t\tc-0.3-1.9-0.5-3.9-0.8-5.8c-0.2-1.8-0.5-3.7-0.7-5.5c-0.4-4.6-1.4-9.2-2.4-13.7c-0.7-2.8-1.7-5.5-2.5-8.3c-0.5-1.6-1-3.2-1.6-4.7\n\t\t\t\t\t\t\tc-1-2.8-1.9-5.7-3-8.4c-0.5-1.3-1.5-2.4-2.3-3.6c-3.2-4.5-5.6-9.4-7.5-14.7c-0.9-2.6-1.6-5.2-2.2-7.8c-0.8-3-1.1-6.1-1.5-9.2\n\t\t\t\t\t\t\tc-0.4-3.4-0.5-6.8-0.4-10.3c0.1-3.9,0.4-7.8,1.2-11.6c0.3-1.5,0.6-3,0.5-4.5c-0.1-2.3-0.2-4.7-1.7-6.6c-0.9-1.1-2.1-2.1-3.3-2.8\n\t\t\t\t\t\t\tc-4.9-2.6-9.8-5.2-14.8-7.6c-3.6-1.7-7.3-3.1-10.9-4.7c-6.1-2.7-12-5.7-17.6-9.3c-4.7-3-9.3-6.2-13.7-9.7c-0.3-0.2-0.6-0.4-1-0.7\n\t\t\t\t\t\t\tc-0.4,0.4-0.8,0.7-1.1,1.2c-3.2,4.7-6.4,9.5-9.6,14.2c-2.7,4.1-5.3,8.4-8.1,12.5c-3.3,4.8-7.2,9.2-11.5,13.1\n\t\t\t\t\t\t\tc-3.5,3.1-7.2,6.1-10.7,9.2c-1.9,1.7-3.6,3.6-5.4,5.5c-2.5,2.6-4.9,5.3-7.3,7.9c-1.6,1.8-3,3.7-4.6,5.5c-1.8,2.2-4,3.7-6.8,4.4\n\t\t\t\t\t\t\tc-4,0.9-7.9,0.6-11.9,0.2c-1.9-0.2-3.8-0.2-5.7-0.4c-4.4-0.4-8.9-0.8-13.3-1.1c-2.5-0.2-5.1-0.5-7.6,0.3c-0.3,0.1-0.6,0.1-0.8,0.1\n\t\t\t\t\t\t\tc-6.5,0.7-13.1,0.9-19.6,0.8c-1.6,0-3.2,0-4.7-0.1c-3.5-0.3-7-0.7-10.4-1c-2.7-0.2-5.4-0.3-8.1-0.4c-2-0.1-4.1-0.3-6.1-0.3\n\t\t\t\t\t\t\tc-4.6,0.1-9.3,0.2-13.9,0.6c-3.6,0.3-7.3,0.8-10.9,1.4c-4.2,0.7-8.4,1.5-12.7,2.3c-1.2,0.2-2.3,0.6-3.6,0.9\n\t\t\t\t\t\t\tc-0.7,0.8,0.1,1.4,0.6,2.1c0.8,1.1,0.8,1.8-0.1,2.7c-0.2,0.2-0.6,0.4-0.9,0.5c-0.3,0.1-0.6,0.1-0.8,0.1c-3-0.2-5.8,0.6-8.7,1.1\n\t\t\t\t\t\t\tc-1.9,0.3-3.8,0.5-5.7,0.9c-1.4,0.3-2.9,0.7-4.1,1.4c-3,1.6-6,3.4-8.9,5.2c-3.3,2.1-6.4,4.5-9.3,7.1c-2.3,2.1-4.5,4.3-6.6,6.6\n\t\t\t\t\t\t\tc-1.5,1.7-3.6,2.6-5.8,3c-2.6,0.4-3.6-1-4-3.4c-0.4-2.8-0.3-5.7-0.1-8.5c0.2-1.9,0.9-3.8,1.5-5.7c1.3-4.1,2.6-8.2,4-12.3\n\t\t\t\t\t\t\tc1-2.8,1.9-5.6,3.8-7.9c1.5-1.8,3.2-3.5,5-5.2c2.9-2.8,5.5-5.9,7.5-9.5c2.2-3.8,4.4-7.5,6.7-11.2c2-3.2,4.1-6.4,6.2-9.5\n\t\t\t\t\t\t\tc0.6-0.8,1.4-1.5,2.1-2.2c2.1-2,4.5-3.4,7.2-4.3c3.2-1,6.4-0.9,9.4,1.1c1.3,0.8,2.3,1.8,2.6,3.4c0.6,3.1,2.3,5.6,4.2,8\n\t\t\t\t\t\t\tc1.2,1.5,2.5,2.8,3.7,4.3c0.9,1.1,1.6,2.4,1.8,3.9c0.2,1.2,0.5,1.5,1.7,1.3c2.7-0.4,5.5-0.8,8.2-1.3c3.1-0.6,6.2-1.2,9.3-2\n\t\t\t\t\t\t\tc3-0.7,6-1.6,8.9-2.5c2.5-0.7,5.1-1.5,7.6-2.4c2.7-1,5.4-2.2,8.1-3.4c2.6-1.1,5.1-2.4,7.7-3.3c4.2-1.5,8.4-2.6,12.7-3.2\n\t\t\t\t\t\t\tc4.6-0.6,9.2-0.5,13.7,0.5c3.8,0.8,7.6,2,11.1,3.8c3,1.5,6.1,1.3,9.3,1c0.7-0.1,1.5-0.5,2.2-0.8c0.2-0.1,0.4-0.4,0.5-0.6\n\t\t\t\t\t\t\tc1.4-2.9,2.9-5.7,4.3-8.6c0.6-1.3,1.1-2.8,1.6-4.2c0.5-1.4,0.9-2.9,1.4-4.3c1.2-3,2.4-6.1,3.8-9c1.4-3,2.9-5.9,4.4-8.8\n\t\t\t\t\t\t\tc0.4-0.7,0.8-1.4,1.1-2.1c0.2-0.5,0.5-0.9,0.5-1.4c0.3-2,0.4-4,0.7-6c0.1-1,0.5-2,0.7-3c1.3-4.7,3.1-9,5.7-13.1\n\t\t\t\t\t\t\tc0.6-1,1.4-1.8,1.9-2.8c1.9-3.7,2.4-7.6,1.8-11.8c-0.6-3.8-0.5-7.7,0.1-11.5c0.4-2.9,0.7-5.9,1.2-8.8c0.5-3.2,0.8-6.5,1.5-9.6\n\t\t\t\t\t\t\tc0.6-2.7,1.6-5.3,2.6-7.8c0.9-2.4,2-4.8,3.2-7c2.3-4.5,5-8.9,7.9-13c1.6-2.2,2.4-4.8,3.1-7.4c1-3.7,1.5-7.4,1.6-11.1\n\t\t\t\t\t\t\tc0.1-2.2,0.2-4.4,0.5-6.6c0.3-2.4,0.7-4.8,1.1-7.2c0.4-2.4,0.5-4.7-0.4-7c-0.5-1.5-1-3-1.6-4.6c-1.3-3.7-2-7.6-2.6-11.5\n\t\t\t\t\t\t\tc-0.9-6-1-12-1.4-18.1c-0.3-5.3,0.2-10.6,0.4-15.9c0.1-1.6,0.1-3.3,0.2-4.9c0-0.4-0.1-0.9-0.2-1.4c-0.9,0.2-1.7,0.3-2.5,0.4\n\t\t\t\t\t\t\tc-1.6,0.3-3.2,0.7-4.8,1.1c-0.6,0.1-1.2,0.2-1.8,0.2c-3.1,0-6.2,0-9.3,0c-0.9,0-1.8-0.2-2.7-0.4c-2.4-0.4-4.7-0.4-7.1,0\n\t\t\t\t\t\t\tc-0.9,0.1-1.8,0.3-2.7,0.5c-1.5,0.2-1.7,0.5-2.2,2.2c-1,3.7-2.4,7.3-4.1,10.7c-3.5,6.6-7.9,12.4-12.7,18.1\n\t\t\t\t\t\t\tc-2.7,3.2-4.8,6.8-6.3,10.8c-1.2,3.2-2.7,6.3-4.1,9.5c-0.7,1.5-1.2,3.1-2,4.5c-0.5,0.9-0.3,1.4,0.3,2c0.9,1.1,1.9,2.1,2.7,3.3\n\t\t\t\t\t\t\tc1,1.4,1.9,2.9,2.7,4.4c0.3,0.6,0.3,1.5,0.1,2.2c-0.6,2.3-1.5,4.5-2,6.8c-0.6,2.7-1.7,4.9-4.2,6c-1.6,0.7-2.4,2.1-3.3,3.4\n\t\t\t\t\t\t\tc-0.3,0.4-0.5,0.8-0.8,1.1c-0.7,0.7-1.4,1.1-2.4,0.6c-1.2-0.6-2.4-0.9-3.7-0.3c-1.4,0.7-2.5,0.1-3.6-0.7c-0.7-0.6-1.4-0.8-2.3-1\n\t\t\t\t\t\t\tc-2.2-0.3-4.2-1.3-5.7-3.1c-0.7-0.9-1.6-1.4-2.7-1.7c-1.8-0.5-3.1-2-3.1-3.8c-0.1-2.4-0.1-4.8,0.1-7.1c0.1-1.3,0.7-2.6,1.3-3.7\n\t\t\t\t\t\t\tc1.9-3.3,4-6.6,6.1-9.7c0.9-1.4,1.5-2.8,2.1-4.3c1.5-4,2.9-8,4.4-11.9c1.4-3.8,2.8-7.5,4.2-11.3c0.7-1.8,1.3-3.5,1.9-5.3\n\t\t\t\t\t\t\tc0.4-1.3,0.5-2.6,0.8-3.9c0.8-3,1.5-6,2.6-9c1.7-4.7,3.5-9.3,5.3-14c0.3-0.7,0.6-1.3,1-2c1.3-2.1,2-4.4,2.5-6.8\n\t\t\t\t\t\t\tc0.9-4.7,3.6-7.6,7.8-9.4c3.1-1.3,6.2-2.8,9.2-4.2c4.2-1.9,8.4-3.8,12.6-5.8c3.2-1.5,6.4-3,9.4-4.8c2.6-1.6,5.5-2.5,8.5-3.3\n\t\t\t\t\t\t\tc4.1-1,8.2-1.9,12-3.9c2.5-1.3,5-2.7,7.3-4.3c3.3-2.1,6.7-3.8,10.5-4.9c5.6-1.7,11.4-2.4,17.2-2.2c0.9,0,1.5-0.4,2.2-0.9\n\t\t\t\t\t\t\tc2.9-2.4,3.6-6,4.9-9.3c0.5-1.4,1-2.9,1.7-4.2c0.7-1.2,0.6-2-0.2-3C257.1,53.2,256.9,52.8,256.6,52.5z\" />\n            </svg>\n          </div>\n          <div class=\"w-96 flex justify-center items-center\">\n            <Link v-if=\"canRegister\" :href=\"route('register')\">\n              <div\n                class=\"p-2 border-gray-700 border  rounded-md hover:bg-blue-200 transition-colors duration-150\"\n                @mouseenter=\"changeColor=false\"\n                @mouseleave=\"changeColor=true\"\n              >Registration</div>\n            </Link>\n          </div>\n        </div>\n      </div>\n\n      <!-- footer -->\n      <footer class=\"absolute h-24 w-full bg-gray-800 bottom-0\">\n        <div class=\"container max-w-6xl mx-auto pt-12 lg:px-8\">\n          <div class=\"flex justify-center text-gray-300 text-sm\">&copy;2021,ONSTART</div>\n        </div>\n      </footer>\n    </div>\n\n  </div>\n</template>\n\n<script lang=\"ts\">\nimport { defineComponent, ref } from \"vue\"\nimport { Head, Link } from '@inertiajs/inertia-vue3';\n\nexport default defineComponent({\n  name: \"Home\",\n  components: {\n    Head,\n    Link\n  },\n  props: {\n        canLogin: Boolean,\n        canRegister: Boolean,\n    },\n  setup() {\n    const changeColor = ref(true);\n    return { changeColor };\n  },\n});\n</script>\n<style scoped >\n@import url(\"https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;1,400;1,500&display=swap\");\n.logo {\n  font-family: \"Poppins\", sans-serif;\n  font-weight: 600;\n  font-size: 3rem;\n}\n</style>"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.logo[data-v-317d1a6e] {\n  font-family: \"Poppins\", sans-serif;\n  font-weight: 600;\n  font-size: 3rem;\n}\n", "",{"version":3,"sources":["webpack://./resources/js/Pages/Welcome.vue"],"names":[],"mappings":";AAmJA;EACE,kCAAkC;EAClC,gBAAgB;EAChB,eAAe;AACjB","sourcesContent":["<template>\n<Head title=\"Welcome\" />\n  <div>\n    <div class=\"relative min-h-screen bg-gray-100\">\n      <!-- navigation -->\n      <div class=\"container max-w-6xl mx-auto sm:py-24 lg:px-8 \">\n        <div class=\"flex justify-between items-center px-3 sm:px-8\">\n          <div class=\"logo\"><span class=\"text-red-600\">ON</span><span>START</span></div>\n          <div>\n            <Link :href=\"route('login')\">\n              <div class=\"border-double rounded hover:bg-red-600 transition-colors duration-150 hover:text-gray-100 border-2 p-2\">Sign In</div>\n            </Link>\n          </div>\n        </div>\n      </div>\n      <!-- welcome -->\n\n      <div class=\"text-center text-gray-800 py-8 text-3xl sm:text-5xl sm:mb-20 font-extrabold\">Running will tell you more</div>\n      <div class=\"flex justify-center h-full\">\n\n        <div class=\"grid  lg:grid-cols-2 gap-14 lg:gap-2\">\n          <div\n            class=\"w-96 h-96 transition-colors duration-400\"\n            :class=\"{'bg-blue-200':changeColor}\"\n          >\n            <svg\n              class=\"p-4 w-96 \"\n              version=\"1.1\"\n              id=\"Layer_1\"\n              xmlns=\"http://www.w3.org/2000/svg\"\n              xmlns:xlink=\"http://www.w3.org/1999/xlink\"\n              x=\"0px\"\n              y=\"0px\"\n              viewBox=\"0 0 421.5 504.7\"\n              enable-background=\"new 0 0 421.5 504.7\"\n              xml:space=\"preserve\"\n            >\n              <path d=\"M256.6,52.5c0.3-0.5,0.5-0.9,0.8-1.3c1-1.4,0.9-2.8,0.3-4.3c-0.7-1.8-1.6-3.4-2.2-5.2c-0.6-1.9-1-3.8-1.1-5.8\n\t\t\t\t\t\t\tc-0.2-3.2-0.2-6.4,0-9.6c0.4-5.1,1.9-9.9,4.9-14c3.4-4.7,8-7.5,13.3-9.6c6.9-2.7,14.2-2.7,21.4-2.6c1.3,0,2.6,0.7,3.9,1.2\n\t\t\t\t\t\t\tc0.7,0.3,1.5,0.6,2.1,1.1c0.6,0.4,1.3,0.4,1.9,0.2c1-0.3,1.9,0,2.7,0.6c0.9,0.6,1.7,0.8,2.8,0.6c2.2-0.5,4.3,0,6,1.4\n\t\t\t\t\t\t\tc0.6,0.5,1.1,1.2,1.4,1.9c1.7,3.6,2.8,7.3,3.6,11.1c0.3,1.2,0,2.4-0.7,3.5c-0.3,0.5-0.5,1.2-0.5,1.8c0.1,1.1,0.4,2.3,0.7,3.4\n\t\t\t\t\t\t\tc0.9,3.4,1.2,6.8,1.4,10.3c0,1,0.1,2.1,0.1,3.1c0,0.9-0.2,1.5-1.2,1.9c-1.6,0.7-1.8,1.2-1.7,3c0.2,2,0.8,3.8,1.7,5.5\n\t\t\t\t\t\t\tc0.9,1.5,1.6,3.2,2.5,4.7c0.8,1.3,0.7,2.5,0.4,4c-0.9,0.2-1.8,0.5-2.7,0.7c-1,0.3-2.1,0.5-3.1,0.9c-0.8,0.3-1.2,1-1.2,1.9\n\t\t\t\t\t\t\tc0,0.9,0,1.7-0.1,2.6c-0.2,1.7-1,2.4-2.6,2.5c-0.8,0-1.6,0.1-2.3,0.2c-0.1,0-0.1,0.2-0.3,0.4c0.6,0.4,1.1,0.7,1.6,1.1\n\t\t\t\t\t\t\tc1.4,1.1,1.5,2.3,0.3,3.6c-1.1,1.1-1.5,2.4-1.4,3.9c0,0.8,0,1.7-0.2,2.5c-0.6,2-2.2,2.5-4,2.5c-2.1,0-4.2,0-6.3,0.1\n\t\t\t\t\t\t\tc-3,0.1-6,0.1-9,0.4c-1.9,0.2-3.7,0.9-4.6,2.9c-0.3,0.6-0.4,1.3-0.4,2c-0.1,2.2,0,4.4-0.2,6.6c-0.1,1.7,0.3,3.2,1,4.7\n\t\t\t\t\t\t\tc2.3,4.8,4.6,9.5,6.8,14.3c2.4,5.4,4.8,10.8,7,16.3c1.2,3.1,2,6.4,1.7,9.8c-0.4,5.1-0.5,10.2-0.9,15.3c-0.3,3.5-0.8,7-1.2,10.5\n\t\t\t\t\t\t\tc0,0.2,0,0.5,0,0.8c0.4,0.1,0.9,0.3,1.3,0.3c1,0,1.9-0.1,2.9-0.2c3.5-0.4,6.9-0.9,10.4-1.3c2.9-0.4,5.8-0.9,8.7-1.3\n\t\t\t\t\t\t\tc1.7-0.3,3.4-0.4,5-0.8c3.6-0.8,6.3-2.9,8.3-6c0.2-0.4,0.3-0.9,0.4-1.3c0.2-1.4,0.2-2.8,0.4-4.2c0.2-1.8,0.3-3.6,0.7-5.3\n\t\t\t\t\t\t\tc0.2-1,0.8-1.9,1.9-2.4c2.8-1.2,5.6-2.7,8.4-3.9c0.8-0.3,2-0.3,2.8,0c2.3,0.9,4.5,1.4,6.9,1.2c0.3,0,0.6,0,0.8,0\n\t\t\t\t\t\t\tc0.9,0,1.5,0.4,1.7,1.3c0.2,1.4,0.9,2.4,2.3,3c1.3,0.5,1.9,1.7,1.8,3.1c0,1.1,0.3,2,0.8,2.8c1.3,2,1.7,4.1,1.2,6.5\n\t\t\t\t\t\t\tc-0.2,1-0.1,1.8,0.3,2.7c0.9,2.1,0.6,3.9-1.1,5.4c-1.1,1-2.4,1.9-3.5,2.9c-2.8,2.6-6.3,4.2-9.7,5.7c-2.7,1.1-5.4,1.6-8.3,1.6\n\t\t\t\t\t\t\tc-1.1,0-2,0.3-2.9,0.9c-2.3,1.4-4.6,2.9-7.1,4c-4.1,2-8.3,3.8-12.5,5.5c-3.1,1.3-6.2,2.3-9.4,3.4c-4.2,1.4-8.3,2.7-12.5,4\n\t\t\t\t\t\t\tc-1.4,0.4-2.8,0.8-4.2,1.2c-1,0.3-1.8,0.9-2.2,1.9c-1.1,2.7-2.7,5.1-4.3,7.6c-2.5,4-4.6,8.2-5.8,12.8c-1.5,5.8-2,11.6-2,17.6\n\t\t\t\t\t\t\tc0,3.1,0,6.3,0,9.4c0,1.6-0.5,3-1.3,4.4c-0.3,0.5-0.4,1.3-0.4,2c0,0.7,0.4,1.1,1,1.2c0.8,0.1,1.6,0.2,2.3,0.3\n\t\t\t\t\t\t\tc1.5,0.2,2.6,1.6,2.5,3.1c-0.1,1,0.2,1.7,1,2.4c1,0.9,1.8,2,2.8,3c1.2,1.2,2.1,2.7,2.4,4.3c0.3,1.2,1,2,1.8,2.8\n\t\t\t\t\t\t\tc1,1.1,2.1,2.3,2.8,3.6c0.8,1.7,2.1,2.9,3.4,4c4.1,3.3,7.8,6.9,11.5,10.7c2.8,2.9,5.5,5.8,7.8,9.1c0.9,1.3,1.8,2.6,2.5,4\n\t\t\t\t\t\t\tc1.8,3.6,4.2,6.7,6.9,9.6c3.9,4.3,8,8.4,11.9,12.7c2.2,2.5,4.5,5,5.7,8.3c0.8,2.3,1.4,4.6,1.9,7c0.5,2.6,0.7,5.3,0.7,8\n\t\t\t\t\t\t\tc0,2.8,0,5.6-0.4,8.3c-0.4,2.8-0.3,5.6,0,8.3c0,0.5,0.2,0.9,0.2,1.4c0.3,5.5,1.4,10.8,2,16.2c0.4,3.5,0.6,7.1,1.2,10.6\n\t\t\t\t\t\t\tc1,6.6,0.5,13.4,1.1,20c0.2,1.7,0,3.4,0.1,5.1c0.3,4.3,0.5,8.6,0.9,12.9c0.3,3,0.7,6,1.2,9c0.5,3,1.2,5.9,1.8,8.8\n\t\t\t\t\t\t\tc0.6,2.8,1.1,5.7,1.7,8.5c0.3,1.4,0.6,2.8,0.9,4.2c0.1,0,0.2,0,0.4,0c0.1-0.4,0.3-0.8,0.4-1.2c0.7-1.5,2.1-1.8,3.1-0.5\n\t\t\t\t\t\t\tc2.5,3.1,5.9,5.1,8.9,7.6c0.8,0.7,1.6,1.4,2.5,2c0.8,0.6,1.7,1.3,2.6,1.6c4,1.2,8.1,2.5,12.2,3.5c5.8,1.4,11.7,2,17.6,2.3\n\t\t\t\t\t\t\tc2.5,0.1,5,0,7.4,0.1c2,0.1,3.9,0.8,5.6,1.8c2.5,1.5,3,4,1.1,6.2c-1.7,1.9-3.4,3.8-5.4,5.5c-1.3,1.1-2.9,1.8-4.4,2.6\n\t\t\t\t\t\t\tc-2.2,1.2-4.5,2.4-6.8,3.5c-3.6,1.7-7.2,3.4-10.9,4.9c-2,0.8-4.2,1-6.3,0.9c-3.6-0.1-7.1-0.2-10.7-0.1c-1.6,0-3.1,0.4-4.7,0.7\n\t\t\t\t\t\t\tc-3.1,0.7-6.1,1.5-9.2,2.1c-1.6,0.4-3.3,0.6-5,1c-1.8,0.4-3.6,0.8-5.5,1.1c-3,0.4-5.9,1.4-9,1c-4.4-0.6-8.5-2.1-11.4-5.6\n\t\t\t\t\t\t\tc-1.8-2.1-2.8-4.6-2.4-7.5c0-0.3,0.2-0.7,0.3-1c2.3-3.4,3.1-7.2,3.2-11.3c0.1-2.5,0.6-5.1,0.9-7.6c0.2-1.3,1.1-2.1,2.2-2.8\n\t\t\t\t\t\t\tc-0.3-1.9-0.5-3.9-0.8-5.8c-0.2-1.8-0.5-3.7-0.7-5.5c-0.4-4.6-1.4-9.2-2.4-13.7c-0.7-2.8-1.7-5.5-2.5-8.3c-0.5-1.6-1-3.2-1.6-4.7\n\t\t\t\t\t\t\tc-1-2.8-1.9-5.7-3-8.4c-0.5-1.3-1.5-2.4-2.3-3.6c-3.2-4.5-5.6-9.4-7.5-14.7c-0.9-2.6-1.6-5.2-2.2-7.8c-0.8-3-1.1-6.1-1.5-9.2\n\t\t\t\t\t\t\tc-0.4-3.4-0.5-6.8-0.4-10.3c0.1-3.9,0.4-7.8,1.2-11.6c0.3-1.5,0.6-3,0.5-4.5c-0.1-2.3-0.2-4.7-1.7-6.6c-0.9-1.1-2.1-2.1-3.3-2.8\n\t\t\t\t\t\t\tc-4.9-2.6-9.8-5.2-14.8-7.6c-3.6-1.7-7.3-3.1-10.9-4.7c-6.1-2.7-12-5.7-17.6-9.3c-4.7-3-9.3-6.2-13.7-9.7c-0.3-0.2-0.6-0.4-1-0.7\n\t\t\t\t\t\t\tc-0.4,0.4-0.8,0.7-1.1,1.2c-3.2,4.7-6.4,9.5-9.6,14.2c-2.7,4.1-5.3,8.4-8.1,12.5c-3.3,4.8-7.2,9.2-11.5,13.1\n\t\t\t\t\t\t\tc-3.5,3.1-7.2,6.1-10.7,9.2c-1.9,1.7-3.6,3.6-5.4,5.5c-2.5,2.6-4.9,5.3-7.3,7.9c-1.6,1.8-3,3.7-4.6,5.5c-1.8,2.2-4,3.7-6.8,4.4\n\t\t\t\t\t\t\tc-4,0.9-7.9,0.6-11.9,0.2c-1.9-0.2-3.8-0.2-5.7-0.4c-4.4-0.4-8.9-0.8-13.3-1.1c-2.5-0.2-5.1-0.5-7.6,0.3c-0.3,0.1-0.6,0.1-0.8,0.1\n\t\t\t\t\t\t\tc-6.5,0.7-13.1,0.9-19.6,0.8c-1.6,0-3.2,0-4.7-0.1c-3.5-0.3-7-0.7-10.4-1c-2.7-0.2-5.4-0.3-8.1-0.4c-2-0.1-4.1-0.3-6.1-0.3\n\t\t\t\t\t\t\tc-4.6,0.1-9.3,0.2-13.9,0.6c-3.6,0.3-7.3,0.8-10.9,1.4c-4.2,0.7-8.4,1.5-12.7,2.3c-1.2,0.2-2.3,0.6-3.6,0.9\n\t\t\t\t\t\t\tc-0.7,0.8,0.1,1.4,0.6,2.1c0.8,1.1,0.8,1.8-0.1,2.7c-0.2,0.2-0.6,0.4-0.9,0.5c-0.3,0.1-0.6,0.1-0.8,0.1c-3-0.2-5.8,0.6-8.7,1.1\n\t\t\t\t\t\t\tc-1.9,0.3-3.8,0.5-5.7,0.9c-1.4,0.3-2.9,0.7-4.1,1.4c-3,1.6-6,3.4-8.9,5.2c-3.3,2.1-6.4,4.5-9.3,7.1c-2.3,2.1-4.5,4.3-6.6,6.6\n\t\t\t\t\t\t\tc-1.5,1.7-3.6,2.6-5.8,3c-2.6,0.4-3.6-1-4-3.4c-0.4-2.8-0.3-5.7-0.1-8.5c0.2-1.9,0.9-3.8,1.5-5.7c1.3-4.1,2.6-8.2,4-12.3\n\t\t\t\t\t\t\tc1-2.8,1.9-5.6,3.8-7.9c1.5-1.8,3.2-3.5,5-5.2c2.9-2.8,5.5-5.9,7.5-9.5c2.2-3.8,4.4-7.5,6.7-11.2c2-3.2,4.1-6.4,6.2-9.5\n\t\t\t\t\t\t\tc0.6-0.8,1.4-1.5,2.1-2.2c2.1-2,4.5-3.4,7.2-4.3c3.2-1,6.4-0.9,9.4,1.1c1.3,0.8,2.3,1.8,2.6,3.4c0.6,3.1,2.3,5.6,4.2,8\n\t\t\t\t\t\t\tc1.2,1.5,2.5,2.8,3.7,4.3c0.9,1.1,1.6,2.4,1.8,3.9c0.2,1.2,0.5,1.5,1.7,1.3c2.7-0.4,5.5-0.8,8.2-1.3c3.1-0.6,6.2-1.2,9.3-2\n\t\t\t\t\t\t\tc3-0.7,6-1.6,8.9-2.5c2.5-0.7,5.1-1.5,7.6-2.4c2.7-1,5.4-2.2,8.1-3.4c2.6-1.1,5.1-2.4,7.7-3.3c4.2-1.5,8.4-2.6,12.7-3.2\n\t\t\t\t\t\t\tc4.6-0.6,9.2-0.5,13.7,0.5c3.8,0.8,7.6,2,11.1,3.8c3,1.5,6.1,1.3,9.3,1c0.7-0.1,1.5-0.5,2.2-0.8c0.2-0.1,0.4-0.4,0.5-0.6\n\t\t\t\t\t\t\tc1.4-2.9,2.9-5.7,4.3-8.6c0.6-1.3,1.1-2.8,1.6-4.2c0.5-1.4,0.9-2.9,1.4-4.3c1.2-3,2.4-6.1,3.8-9c1.4-3,2.9-5.9,4.4-8.8\n\t\t\t\t\t\t\tc0.4-0.7,0.8-1.4,1.1-2.1c0.2-0.5,0.5-0.9,0.5-1.4c0.3-2,0.4-4,0.7-6c0.1-1,0.5-2,0.7-3c1.3-4.7,3.1-9,5.7-13.1\n\t\t\t\t\t\t\tc0.6-1,1.4-1.8,1.9-2.8c1.9-3.7,2.4-7.6,1.8-11.8c-0.6-3.8-0.5-7.7,0.1-11.5c0.4-2.9,0.7-5.9,1.2-8.8c0.5-3.2,0.8-6.5,1.5-9.6\n\t\t\t\t\t\t\tc0.6-2.7,1.6-5.3,2.6-7.8c0.9-2.4,2-4.8,3.2-7c2.3-4.5,5-8.9,7.9-13c1.6-2.2,2.4-4.8,3.1-7.4c1-3.7,1.5-7.4,1.6-11.1\n\t\t\t\t\t\t\tc0.1-2.2,0.2-4.4,0.5-6.6c0.3-2.4,0.7-4.8,1.1-7.2c0.4-2.4,0.5-4.7-0.4-7c-0.5-1.5-1-3-1.6-4.6c-1.3-3.7-2-7.6-2.6-11.5\n\t\t\t\t\t\t\tc-0.9-6-1-12-1.4-18.1c-0.3-5.3,0.2-10.6,0.4-15.9c0.1-1.6,0.1-3.3,0.2-4.9c0-0.4-0.1-0.9-0.2-1.4c-0.9,0.2-1.7,0.3-2.5,0.4\n\t\t\t\t\t\t\tc-1.6,0.3-3.2,0.7-4.8,1.1c-0.6,0.1-1.2,0.2-1.8,0.2c-3.1,0-6.2,0-9.3,0c-0.9,0-1.8-0.2-2.7-0.4c-2.4-0.4-4.7-0.4-7.1,0\n\t\t\t\t\t\t\tc-0.9,0.1-1.8,0.3-2.7,0.5c-1.5,0.2-1.7,0.5-2.2,2.2c-1,3.7-2.4,7.3-4.1,10.7c-3.5,6.6-7.9,12.4-12.7,18.1\n\t\t\t\t\t\t\tc-2.7,3.2-4.8,6.8-6.3,10.8c-1.2,3.2-2.7,6.3-4.1,9.5c-0.7,1.5-1.2,3.1-2,4.5c-0.5,0.9-0.3,1.4,0.3,2c0.9,1.1,1.9,2.1,2.7,3.3\n\t\t\t\t\t\t\tc1,1.4,1.9,2.9,2.7,4.4c0.3,0.6,0.3,1.5,0.1,2.2c-0.6,2.3-1.5,4.5-2,6.8c-0.6,2.7-1.7,4.9-4.2,6c-1.6,0.7-2.4,2.1-3.3,3.4\n\t\t\t\t\t\t\tc-0.3,0.4-0.5,0.8-0.8,1.1c-0.7,0.7-1.4,1.1-2.4,0.6c-1.2-0.6-2.4-0.9-3.7-0.3c-1.4,0.7-2.5,0.1-3.6-0.7c-0.7-0.6-1.4-0.8-2.3-1\n\t\t\t\t\t\t\tc-2.2-0.3-4.2-1.3-5.7-3.1c-0.7-0.9-1.6-1.4-2.7-1.7c-1.8-0.5-3.1-2-3.1-3.8c-0.1-2.4-0.1-4.8,0.1-7.1c0.1-1.3,0.7-2.6,1.3-3.7\n\t\t\t\t\t\t\tc1.9-3.3,4-6.6,6.1-9.7c0.9-1.4,1.5-2.8,2.1-4.3c1.5-4,2.9-8,4.4-11.9c1.4-3.8,2.8-7.5,4.2-11.3c0.7-1.8,1.3-3.5,1.9-5.3\n\t\t\t\t\t\t\tc0.4-1.3,0.5-2.6,0.8-3.9c0.8-3,1.5-6,2.6-9c1.7-4.7,3.5-9.3,5.3-14c0.3-0.7,0.6-1.3,1-2c1.3-2.1,2-4.4,2.5-6.8\n\t\t\t\t\t\t\tc0.9-4.7,3.6-7.6,7.8-9.4c3.1-1.3,6.2-2.8,9.2-4.2c4.2-1.9,8.4-3.8,12.6-5.8c3.2-1.5,6.4-3,9.4-4.8c2.6-1.6,5.5-2.5,8.5-3.3\n\t\t\t\t\t\t\tc4.1-1,8.2-1.9,12-3.9c2.5-1.3,5-2.7,7.3-4.3c3.3-2.1,6.7-3.8,10.5-4.9c5.6-1.7,11.4-2.4,17.2-2.2c0.9,0,1.5-0.4,2.2-0.9\n\t\t\t\t\t\t\tc2.9-2.4,3.6-6,4.9-9.3c0.5-1.4,1-2.9,1.7-4.2c0.7-1.2,0.6-2-0.2-3C257.1,53.2,256.9,52.8,256.6,52.5z\" />\n            </svg>\n          </div>\n          <div class=\"w-96 lg:h-96 flex justify-center items-center bg-map-patern\">\n            <Link v-if=\"canRegister\" :href=\"route('register')\">\n              <div\n                class=\"p-2 border-gray-700 border bg-gray-300  rounded-md hover:bg-blue-200 transition-colors duration-150\"\n                @mouseenter=\"changeColor=false\"\n                @mouseleave=\"changeColor=true\"\n              >Registration</div>\n            </Link>\n          </div>\n        </div>\n      </div>\n\n      <!-- footer -->\n      <footer class=\"absolute h-24 w-full bg-gray-800 bottom-0\">\n        <div class=\"container max-w-6xl mx-auto pt-12 lg:px-8\">\n          <div class=\"flex justify-center text-gray-300 text-sm\">&copy;2021,ONSTART</div>\n        </div>\n      </footer>\n    </div>\n\n  </div>\n</template>\n\n<script lang=\"ts\">\nimport { defineComponent, ref } from \"vue\"\nimport { Head, Link } from '@inertiajs/inertia-vue3';\n\nexport default defineComponent({\n  name: \"Home\",\n  components: {\n    Head,\n    Link\n  },\n  props: {\n        canLogin: Boolean,\n        canRegister: Boolean,\n    },\n  setup() {\n    const changeColor = ref(true);\n    return { changeColor };\n  },\n});\n</script>\n<style scoped >\n@import url(\"https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;1,400;1,500&display=swap\");\n.logo {\n  font-family: \"Poppins\", sans-serif;\n  font-weight: 600;\n  font-size: 3rem;\n}\n</style>"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -48605,12 +48605,9 @@ module.exports = words;
 /*!*******************************!*\
   !*** ./resources/css/app.css ***!
   \*******************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (() => {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
+throw new Error("Module build failed (from ./node_modules/mini-css-extract-plugin/dist/loader.js):\nModuleBuildError: Module build failed (from ./node_modules/css-loader/dist/cjs.js):\nError: Can't resolve 'images/relief-01.svg' in 'C:\\OpenServer\\domains\\onstart\\resources\\css'\n    at finishWithoutResolve (C:\\OpenServer\\domains\\onstart\\node_modules\\enhanced-resolve\\lib\\Resolver.js:293:18)\n    at C:\\OpenServer\\domains\\onstart\\node_modules\\enhanced-resolve\\lib\\Resolver.js:362:15\n    at C:\\OpenServer\\domains\\onstart\\node_modules\\enhanced-resolve\\lib\\Resolver.js:410:5\n    at eval (eval at create (C:\\OpenServer\\domains\\onstart\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:16:1)\n    at C:\\OpenServer\\domains\\onstart\\node_modules\\enhanced-resolve\\lib\\Resolver.js:410:5\n    at eval (eval at create (C:\\OpenServer\\domains\\onstart\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:27:1)\n    at C:\\OpenServer\\domains\\onstart\\node_modules\\enhanced-resolve\\lib\\DescriptionFilePlugin.js:87:43\n    at C:\\OpenServer\\domains\\onstart\\node_modules\\enhanced-resolve\\lib\\Resolver.js:410:5\n    at eval (eval at create (C:\\OpenServer\\domains\\onstart\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:15:1)\n    at C:\\OpenServer\\domains\\onstart\\node_modules\\enhanced-resolve\\lib\\Resolver.js:410:5\n    at processResult (C:\\OpenServer\\domains\\onstart\\node_modules\\webpack\\lib\\NormalModule.js:721:19)\n    at C:\\OpenServer\\domains\\onstart\\node_modules\\webpack\\lib\\NormalModule.js:827:5\n    at C:\\OpenServer\\domains\\onstart\\node_modules\\loader-runner\\lib\\LoaderRunner.js:399:11\n    at C:\\OpenServer\\domains\\onstart\\node_modules\\loader-runner\\lib\\LoaderRunner.js:251:18\n    at context.callback (C:\\OpenServer\\domains\\onstart\\node_modules\\loader-runner\\lib\\LoaderRunner.js:124:13)\n    at Object.loader (C:\\OpenServer\\domains\\onstart\\node_modules\\css-loader\\dist\\index.js:155:5)\n    at processTicksAndRejections (internal/process/task_queues.js:95:5)");
 
 /***/ }),
 
@@ -58945,42 +58942,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 		return module.exports;
 /******/ 	}
 /******/ 	
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = __webpack_modules__;
-/******/ 	
 /************************************************************************/
-/******/ 	/* webpack/runtime/chunk loaded */
-/******/ 	(() => {
-/******/ 		var deferred = [];
-/******/ 		__webpack_require__.O = (result, chunkIds, fn, priority) => {
-/******/ 			if(chunkIds) {
-/******/ 				priority = priority || 0;
-/******/ 				for(var i = deferred.length; i > 0 && deferred[i - 1][2] > priority; i--) deferred[i] = deferred[i - 1];
-/******/ 				deferred[i] = [chunkIds, fn, priority];
-/******/ 				return;
-/******/ 			}
-/******/ 			var notFulfilled = Infinity;
-/******/ 			for (var i = 0; i < deferred.length; i++) {
-/******/ 				var [chunkIds, fn, priority] = deferred[i];
-/******/ 				var fulfilled = true;
-/******/ 				for (var j = 0; j < chunkIds.length; j++) {
-/******/ 					if ((priority & 1 === 0 || notFulfilled >= priority) && Object.keys(__webpack_require__.O).every((key) => (__webpack_require__.O[key](chunkIds[j])))) {
-/******/ 						chunkIds.splice(j--, 1);
-/******/ 					} else {
-/******/ 						fulfilled = false;
-/******/ 						if(priority < notFulfilled) notFulfilled = priority;
-/******/ 					}
-/******/ 				}
-/******/ 				if(fulfilled) {
-/******/ 					deferred.splice(i--, 1)
-/******/ 					var r = fn();
-/******/ 					if (r !== undefined) result = r;
-/******/ 				}
-/******/ 			}
-/******/ 			return result;
-/******/ 		};
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
 /******/ 		// getDefaultExport function for compatibility with non-harmony modules
@@ -59042,68 +59004,13 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 		};
 /******/ 	})();
 /******/ 	
-/******/ 	/* webpack/runtime/jsonp chunk loading */
-/******/ 	(() => {
-/******/ 		// no baseURI
-/******/ 		
-/******/ 		// object to store loaded and loading chunks
-/******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
-/******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
-/******/ 		var installedChunks = {
-/******/ 			"/js/app": 0,
-/******/ 			"css/app": 0
-/******/ 		};
-/******/ 		
-/******/ 		// no chunk on demand loading
-/******/ 		
-/******/ 		// no prefetching
-/******/ 		
-/******/ 		// no preloaded
-/******/ 		
-/******/ 		// no HMR
-/******/ 		
-/******/ 		// no HMR manifest
-/******/ 		
-/******/ 		__webpack_require__.O.j = (chunkId) => (installedChunks[chunkId] === 0);
-/******/ 		
-/******/ 		// install a JSONP callback for chunk loading
-/******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
-/******/ 			var [chunkIds, moreModules, runtime] = data;
-/******/ 			// add "moreModules" to the modules object,
-/******/ 			// then flag all "chunkIds" as loaded and fire callback
-/******/ 			var moduleId, chunkId, i = 0;
-/******/ 			if(chunkIds.some((id) => (installedChunks[id] !== 0))) {
-/******/ 				for(moduleId in moreModules) {
-/******/ 					if(__webpack_require__.o(moreModules, moduleId)) {
-/******/ 						__webpack_require__.m[moduleId] = moreModules[moduleId];
-/******/ 					}
-/******/ 				}
-/******/ 				if(runtime) var result = runtime(__webpack_require__);
-/******/ 			}
-/******/ 			if(parentChunkLoadingFunction) parentChunkLoadingFunction(data);
-/******/ 			for(;i < chunkIds.length; i++) {
-/******/ 				chunkId = chunkIds[i];
-/******/ 				if(__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
-/******/ 					installedChunks[chunkId][0]();
-/******/ 				}
-/******/ 				installedChunks[chunkIds[i]] = 0;
-/******/ 			}
-/******/ 			return __webpack_require__.O(result);
-/******/ 		}
-/******/ 		
-/******/ 		var chunkLoadingGlobal = self["webpackChunk"] = self["webpackChunk"] || [];
-/******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
-/******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
-/******/ 	})();
-/******/ 	
 /************************************************************************/
 /******/ 	
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
-/******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/js/app.js")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/css/app.css")))
-/******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
+/******/ 	__webpack_require__("./resources/js/app.js");
+/******/ 	// This entry module doesn't tell about it's top-level declarations so it can't be inlined
+/******/ 	var __webpack_exports__ = __webpack_require__("./resources/css/app.css");
 /******/ 	
 /******/ })()
 ;
