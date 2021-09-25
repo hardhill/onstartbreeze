@@ -29,6 +29,12 @@ import { Head } from '@inertiajs/inertia-vue3';
 import OsLinkButton from '@/Components/ui/OsLinkButton.vue'
 
 export default {
+    props:{
+      activities:{
+          type:Array,
+          required:true
+      }
+    },
     components: {
         BreezeAuthenticatedLayout,
         Head,
