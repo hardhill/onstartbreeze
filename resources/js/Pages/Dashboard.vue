@@ -10,7 +10,7 @@
                 <div class="flex">
                     <form>
                         <OsButton @click="selectFile">Load GPX</OsButton>
-                        <input class="fileLoader" ref="gpxInput" type="file">
+                        <input class="fileLoader" ref="gpxInput" type="file" @change="sendFile">
                     </form>
 
                 </div>
@@ -35,6 +35,7 @@ import { Head } from '@inertiajs/inertia-vue3';
 import {ref} from 'vue'
 import OsLinkButton from '@/Components/ui/OsLinkButton.vue'
 import OsButton from "@/Components/ui/OsButton";
+import {Inertia} from "@inertiajs/inertia";
 
 export default {
     props:['activities']
@@ -50,9 +51,17 @@ export default {
         const selectFile = ()=>{
             console.log('load file')
             gpxInput.value.click()
-
         }
-        return {selectFile, gpxInput}
+        const sendFile = (event)=>{
+            if(gpxInput.value.files.length>0){
+                console.log('file loading')
+                let form = Inertia.form({
+                    file:gpxInput.value.files[0]
+                })
+                form.post(route('gpx.save'),{})
+            }
+        }
+        return {selectFile, gpxInput, sendFile}
     }
 }
 </script>

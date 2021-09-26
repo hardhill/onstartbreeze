@@ -2,6 +2,8 @@
 
 use App\Models\Activity;
 use Illuminate\Foundation\Application;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -28,5 +30,10 @@ Route::get('/dashboard', function () {
     $activities = Activity::all();
     return Inertia::render('Dashboard',['activities'=>$activities]);
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::post('gpx/save',function(Request $request){
+    $file = $request->files;
+    return Redirect::route('login')->with('success','Point saved');
+})->middleware(['auth'])->name('gpx.save');
 
 require __DIR__.'/auth.php';
