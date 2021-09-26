@@ -22,7 +22,7 @@ Route::get('/', function () {
         'canRegister' => Route::has('register'),
 
     ]);
-});
+})->name('welcome');
 
 Route::get('/dashboard', function () {
     $activities = Activity::all();

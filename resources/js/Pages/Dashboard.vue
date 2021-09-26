@@ -4,10 +4,16 @@
     <BreezeAuthenticatedLayout>
         <template #header>
             <div class="flex justify-between items-center">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Dashboard
-            </h2>
-            <OsLinkButton href=''>Load GPX</OsLinkButton>
+                <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                    Dashboard
+                </h2>
+                <div class="flex">
+                    <form>
+                        <OsButton @click="selectFile">Load GPX</OsButton>
+                        <input class="fileLoader" ref="gpxInput" type="file">
+                    </form>
+
+                </div>
             </div>
         </template>
 
@@ -26,19 +32,37 @@
 <script>
 import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue'
 import { Head } from '@inertiajs/inertia-vue3';
+import {ref} from 'vue'
 import OsLinkButton from '@/Components/ui/OsLinkButton.vue'
+import OsButton from "@/Components/ui/OsButton";
 
 export default {
-    props:{
-      activities:{
-          type:Array,
-          required:true
-      }
-    },
+    props:['activities']
+    ,
     components: {
+        OsButton,
         BreezeAuthenticatedLayout,
         Head,
         OsLinkButton
     },
+    setup(){
+        const gpxInput = ref(null)
+        const selectFile = ()=>{
+            console.log('load file')
+            gpxInput.value.click()
+
+        }
+        return {selectFile, gpxInput}
+    }
 }
 </script>
+<style scoped lang="postcss">
+.fileLoader{
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+    width: 0.1px;
+    height: 0.1px;
+}
+</style>

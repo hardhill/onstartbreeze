@@ -8,7 +8,7 @@
                         <div class="flex">
                             <!-- Logo -->
                             <div class="flex-shrink-0 flex items-center">
-                                <Link :href="route('dashboard')">
+                                <Link :href="route('welcome')">
                                      <div class="logo"><span class="text-red-600">ON</span><span>START</span></div>
                                 </Link>
                             </div>

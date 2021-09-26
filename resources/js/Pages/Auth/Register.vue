@@ -22,7 +22,7 @@
                 v-model="userValue" @blur="userBlur"
                 >
                 <div  class="text-xs text-red-400">&nbsp;{{userError}}</div>
-            </div> 
+            </div>
             <div class="mb-3">
                 <label for="email" class="text-sm text-gray-400">Email</label>
                 <input
@@ -82,7 +82,7 @@ export default {
     Loading
   },
   setup() {
-    
+
     const {handleSubmit, isSubmitting, submitCount} = useForm()
     const {value:userValue,errorMessage:userError,handleBlur:userBlur} = useField('name',yup.string().required().min(3))
     const {value:emailValue,errorMessage:emailError,handleBlur:emailBlur} = useField('email',yup.string().trim().required().email())
@@ -95,7 +95,7 @@ export default {
             name:values.name,
             email:values.email,
             password:values.password,
-            password:values.password_confirmation
+            password_confirmation:values.password_confirmation
           })
           form.post(route('register'),{
                 onBefore:()=>{
@@ -120,7 +120,7 @@ export default {
       passconfValue, passconfError, passconfBlur,
       onSubmit, manyAttempts, isSubmitting,
       processing
-    
+
     }
   },
 }
