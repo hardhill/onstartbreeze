@@ -10,7 +10,7 @@
                 <div class="flex">
                     <form>
                         <OsButton @click="selectFile">Load GPX</OsButton>
-                        <input class="fileLoader" ref="gpxInput" type="file" @change="sendFile">
+                        <input class="fileLoader" ref="gpxInput" type="file" accept="text/xml+gpx" @change="sendFile">
                     </form>
 
                 </div>
