@@ -17,7 +17,8 @@ class CreateActivitiesTable extends Migration
             $table->id();
             $table->string('title');
             $table->foreignId('category_id')->constrained('categories')->cascadeOnDelete();
-            $table->dateTime('created')->nullable(false);
+            $table->dateTime('start_at')->nullable(false);
+            $table->string('creator',150);
             $table->longText('gpx');
             $table->timestamps();
         });
