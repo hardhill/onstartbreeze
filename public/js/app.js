@@ -21458,15 +21458,27 @@ var _hoisted_3 = {
 
 var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Load GPX");
 
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_5 = {
   "class": "py-12"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+};
+var _hoisted_6 = {
   "class": "max-w-7xl mx-auto sm:px-6 lg:px-8"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+};
+var _hoisted_7 = {
   "class": "bg-white overflow-hidden shadow-sm sm:rounded-lg"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+};
+var _hoisted_8 = {
   "class": "p-6 bg-white border-b border-gray-200"
-}, " You're logged in! ")])])], -1
+};
+var _hoisted_9 = {
+  key: 0,
+  "class": ""
+};
+var _hoisted_10 = {
+  key: 1
+};
+
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, "#"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, "Started"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, "Title")])], -1
 /* HOISTED */
 );
 
@@ -21507,7 +21519,19 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       )])])])];
     }),
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_5];
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [$props.activities.length == 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_9, "You have not activities!")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", null, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.activities, function (activity, index) {
+        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
+          key: activity.trackid
+        }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(index + 1), 1
+        /* TEXT */
+        ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(activity.start_at), 1
+        /* TEXT */
+        ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(activity.title), 1
+        /* TEXT */
+        )]);
+      }), 128
+      /* KEYED_FRAGMENT */
+      ))])])]))])])])])];
     }),
     _: 1
     /* STABLE */
@@ -21840,7 +21864,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.fileLoader[data-v-097ba13b]{\n    opacity: 0;\n    overflow: hidden;\n    position: absolute;\n    z-index: -1;\n    width: 0.1px;\n    height: 0.1px;\n}\n", "",{"version":3,"sources":["webpack://./resources/js/Pages/Dashboard.vue"],"names":[],"mappings":";AAoEA;IACI,UAAU;IACV,gBAAgB;IAChB,kBAAkB;IAClB,WAAW;IACX,YAAY;IACZ,aAAa;AACjB","sourcesContent":["<template>\n    <Head title=\"Dashboard\" />\n\n    <BreezeAuthenticatedLayout>\n        <template #header>\n            <div class=\"flex justify-between items-center\">\n                <h2 class=\"font-semibold text-xl text-gray-800 leading-tight\">\n                    Dashboard\n                </h2>\n                <div class=\"flex\">\n                    <form>\n                        <OsButton @click=\"selectFile\">Load GPX</OsButton>\n                        <input class=\"fileLoader\" ref=\"gpxInput\" type=\"file\" accept=\"text/xml+gpx\" @change=\"sendFile\">\n                    </form>\n\n                </div>\n            </div>\n        </template>\n\n        <div class=\"py-12\">\n            <div class=\"max-w-7xl mx-auto sm:px-6 lg:px-8\">\n                <div class=\"bg-white overflow-hidden shadow-sm sm:rounded-lg\">\n                    <div class=\"p-6 bg-white border-b border-gray-200\">\n                        You're logged in!\n                    </div>\n                </div>\n            </div>\n        </div>\n    </BreezeAuthenticatedLayout>\n</template>\n\n<script>\nimport BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue'\nimport { Head } from '@inertiajs/inertia-vue3';\nimport {ref} from 'vue'\nimport OsLinkButton from '@/Components/ui/OsLinkButton.vue'\nimport OsButton from \"@/Components/ui/OsButton\";\nimport {Inertia} from \"@inertiajs/inertia\";\n\nexport default {\n    props:['activities']\n    ,\n    components: {\n        OsButton,\n        BreezeAuthenticatedLayout,\n        Head,\n        OsLinkButton\n    },\n    setup(){\n        const gpxInput = ref(null)\n        const selectFile = ()=>{\n            console.log('load file')\n            gpxInput.value.click()\n        }\n        const sendFile = (event)=>{\n            if(gpxInput.value.files.length>0){\n                console.log('file loading')\n                let form = Inertia.form({\n                    file:gpxInput.value.files[0]\n                })\n                form.post(route('gpx.save'),{})\n            }\n        }\n        return {selectFile, gpxInput, sendFile}\n    }\n}\n</script>\n<style scoped lang=\"postcss\">\n.fileLoader{\n    opacity: 0;\n    overflow: hidden;\n    position: absolute;\n    z-index: -1;\n    width: 0.1px;\n    height: 0.1px;\n}\n</style>\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.fileLoader[data-v-097ba13b]{\n    opacity: 0;\n    overflow: hidden;\n    position: absolute;\n    z-index: -1;\n    width: 0.1px;\n    height: 0.1px;\n}\n", "",{"version":3,"sources":["webpack://./resources/js/Pages/Dashboard.vue"],"names":[],"mappings":";AAsFA;IACI,UAAU;IACV,gBAAgB;IAChB,kBAAkB;IAClB,WAAW;IACX,YAAY;IACZ,aAAa;AACjB","sourcesContent":["<template>\n    <Head title=\"Dashboard\" />\n\n    <BreezeAuthenticatedLayout>\n        <template #header>\n            <div class=\"flex justify-between items-center\">\n                <h2 class=\"font-semibold text-xl text-gray-800 leading-tight\">\n                    Dashboard\n                </h2>\n                <div class=\"flex\">\n                    <form>\n                        <OsButton @click=\"selectFile\">Load GPX</OsButton>\n                        <input class=\"fileLoader\" ref=\"gpxInput\" type=\"file\" accept=\"text/xml+gpx\" @change=\"sendFile\">\n                    </form>\n\n                </div>\n            </div>\n        </template>\n\n        <div class=\"py-12\">\n            <div class=\"max-w-7xl mx-auto sm:px-6 lg:px-8\">\n                <div class=\"bg-white overflow-hidden shadow-sm sm:rounded-lg\">\n                    <div class=\"p-6 bg-white border-b border-gray-200\">\n                        <div class=\"\" v-if=\"activities.length==0\">You have not activities!</div>\n                        <div v-else>\n                            <table>\n                                <thead>\n                                    <tr>\n                                        <td>#</td>\n                                        <td>Started</td>\n                                        <td>Title</td>\n                                    </tr>\n                                </thead>\n                                <tbody>\n                                    <tr v-for=\"(activity,index) in activities\" :key=\"activity.trackid\">\n                                        <td>{{index+1}}</td>\n                                        <td>{{activity.start_at}}</td>\n                                        <td>{{activity.title}}</td>\n                                    </tr>\n                                </tbody>\n                            </table>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </BreezeAuthenticatedLayout>\n</template>\n\n<script>\nimport BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue'\nimport { Head } from '@inertiajs/inertia-vue3';\nimport {ref} from 'vue'\nimport OsLinkButton from '@/Components/ui/OsLinkButton.vue'\nimport OsButton from \"@/Components/ui/OsButton\";\nimport {Inertia} from \"@inertiajs/inertia\";\n\nexport default {\n    props:['activities']\n    ,\n    components: {\n        OsButton,\n        BreezeAuthenticatedLayout,\n        Head,\n        OsLinkButton\n    },\n    setup(){\n        const gpxInput = ref(null)\n        const selectFile = ()=>{\n            console.log('load file')\n            gpxInput.value.click()\n        }\n        const sendFile = (event)=>{\n            if(gpxInput.value.files.length>0){\n                console.log('file loading')\n                let form = Inertia.form({\n                    file:gpxInput.value.files[0]\n                })\n                form.post(route('gpx.save'),{})\n            }\n        }\n        return {selectFile, gpxInput, sendFile}\n    }\n}\n</script>\n<style scoped lang=\"postcss\">\n.fileLoader{\n    opacity: 0;\n    overflow: hidden;\n    position: absolute;\n    z-index: -1;\n    width: 0.1px;\n    height: 0.1px;\n}\n</style>\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

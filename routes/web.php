@@ -1,7 +1,9 @@
 <?php
 
+use App\GPXStart;
 use App\Models\Activity;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -34,15 +36,19 @@ Route::post('gpx/save',function(Request $request){
     $files = $request->files;
     if($files->count()>0){
         $s = $_FILES['file']['tmp_name'];
-        $parser = new \App\GPXParser();
+        $gpx = new GPXStart($s);
+        $activity = new Activity();
+        $activity->trackid = $gpx->GetIdTrack();
+        $activity->title = $gpx->GetTitle();
+        $activity->category_id = 1;
+        $activity->creator = $gpx->GetFile()->creator;
+        $activity->start_at = $gpx->GetTimeStart();
+        $activity->user_id = Auth::id();
+        $activity->gpx = $gpx->GetContent();
         try {
-            $gpxstring = file_get_contents($s);
-            if($parser->Parse($gpxstring)){
-                // создание записи активности
-
-            }
+            $activity->save();
         }catch (Exception $err){
-
+            abort('500','Do not save GPX track');
         }
 
     }
