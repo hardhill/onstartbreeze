@@ -19,6 +19,16 @@ class CreateActivitiesTable extends Migration
             $table->string('title');
             $table->foreignId('category_id')->constrained('categories')->cascadeOnDelete();
             $table->dateTime('start_at')->nullable(false);
+            $table->integer('duration')->nullable(true);
+            $table->float('distance')->nullable(true);
+            $table->float('avrspeed')->nullable(true);
+            $table->float('avrpace')->nullable(true);
+            $table->integer('minaltitude')->nullable(true);
+            $table->integer('maxaltitude')->nullable(true);
+            $table->integer('elevationgain')->nullable(true);
+            $table->integer('elevationloss')->nullable(true);
+            $table->dateTime('started_at')->nullable(true);
+            $table->dateTime('finished_at')->nullable(true);
             $table->string('creator',150);
             $table->longText('gpx');
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();

@@ -16,5 +16,8 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         Category::create(['sports'=>'Run']);
+        Category::create(['sports'=>'Walk']);
+        Category::create(['sports'=>'Cycle']);
+        Category::create(['sports'=>'Ski']);
     }
 }

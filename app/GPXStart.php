@@ -3,6 +3,8 @@
 namespace App;
 
 
+use phpGPX\Models\Stats;
+use phpGPX\Models\Track;
 use phpGPX\phpGPX;
 
 class GPXStart extends phpGPX
@@ -32,15 +34,15 @@ class GPXStart extends phpGPX
         return $this->file;
     }
     // первый трэк в файле
-    public function GetTrack(){
+    public function GetTrack():Track{
         return $this->track;
     }
     //заголовок трека
-    public function GetTitle(){
+    public function GetTitle():string{
         return $this->track->name;
     }
     //содержимое файла в виде строки
-    public function GetContent(){
+    public function GetContent():string{
         try {
             $s = file_get_contents($this->filename);
         }catch(\Exception $err){
@@ -50,16 +52,15 @@ class GPXStart extends phpGPX
     }
 
     // время начала записи файла
-    public function GetTimeStart(){
-
+    public function GetTimeStart():\DateTime{
         return $this->file->metadata->time;
     }
     // хэш функция содержимого файла GPX
-    public function GetHashGPX(){
+    public function GetHashGPX():string{
         return hash('sha512',$this->GetContent());
     }
 
-    public function GetIdTrack(){
+    public function GetIdTrack():string{
         $points = $this->track->getPoints();
         $acc = "";
         for($i=0;$i<5;$i++){
@@ -67,5 +68,8 @@ class GPXStart extends phpGPX
             $acc = $acc.$point->time->format('c').$point->latitude.$point->longitude."\n";
         }
         return hash('md5',$acc);
+    }
+    public function GetStat():Stats{
+        return $this->track->stats;
     }
 }

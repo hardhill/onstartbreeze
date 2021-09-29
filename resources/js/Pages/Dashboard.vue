@@ -29,6 +29,7 @@
                                         <td>#</td>
                                         <td>Started</td>
                                         <td>Title</td>
+                                        <td>Sport</td>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -36,6 +37,7 @@
                                         <td>{{index+1}}</td>
                                         <td>{{activity.start_at}}</td>
                                         <td>{{activity.title}}</td>
+                                        <td>{{activity.sport}}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -64,7 +66,8 @@ export default {
         Head,
         OsLinkButton
     },
-    setup(){
+    setup(props){
+        console.log(props.activities)
         const gpxInput = ref(null)
         const selectFile = ()=>{
             console.log('load file')
