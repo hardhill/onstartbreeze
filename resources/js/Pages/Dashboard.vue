@@ -30,6 +30,9 @@
                                         <td>Started</td>
                                         <td>Title</td>
                                         <td>Sport</td>
+                                        <td>Duration(hms)</td>
+                                        <td>Distance(km)</td>
+                                        <td>Pace(m/km)</td>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -38,6 +41,9 @@
                                         <td>{{activity.start_at}}</td>
                                         <td>{{activity.title}}</td>
                                         <td>{{activity.sport}}</td>
+                                        <td>{{new Date(activity.duration * 1000).toISOString().substr(11, 8) }}</td>
+                                        <td>{{zeroPad(activity.distance/1000,4)}}</td>
+                                        <td>{{PaceMKm(activity.avrpace)}}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -82,7 +88,21 @@ export default {
                 form.post(route('gpx.save'),{})
             }
         }
-        return {selectFile, gpxInput, sendFile}
+        const zeroPad = function(num, pad){
+            var pd = Math.pow(10,pad);
+            return Math.floor(num*pd)/pd;
+        }
+        const PaceMKm = function(num){
+            var dt = new Date(num*1000)
+            if(num>=3600){
+               return dt.toISOString().substr(11,8)
+            }else{
+               return dt.toISOString().substr(14,5)
+            }
+
+            return s
+        }
+        return {selectFile, gpxInput, sendFile, zeroPad, PaceMKm}
     }
 }
 </script>
