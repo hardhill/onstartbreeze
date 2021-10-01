@@ -20,6 +20,7 @@ class CreateActivitiesTable extends Migration
             $table->foreignId('category_id')->constrained('categories')->cascadeOnDelete();
             $table->dateTime('start_at')->nullable(false);
             $table->integer('duration')->nullable(true); //seconds
+            $table->integer('movingtime')->nullable(true); //seconds
             $table->float('distance')->nullable(true); //meters
             $table->float('avrspeed')->nullable(true); // m/s
             $table->float('avrpace')->nullable(true);   // s/km

@@ -10,7 +10,7 @@
                 <div class="flex">
                     <form>
                         <OsButton @click="selectFile">Load GPX</OsButton>
-                        <input class="fileLoader" ref="gpxInput" type="file" accept="text/xml+gpx" @change="sendFile">
+                        <input class="fileLoader" ref="gpxInput" type="file" accept=".gpx" @change="sendFile">
                     </form>
 
                 </div>
@@ -30,9 +30,12 @@
                                         <td>Started</td>
                                         <td>Title</td>
                                         <td>Sport</td>
-                                        <td>Duration(hms)</td>
                                         <td>Distance(km)</td>
+                                        <td>Duration(hms)</td>
                                         <td>Pace(m/km)</td>
+                                        <td>Moving time(hms)</td>
+
+
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -41,9 +44,12 @@
                                         <td>{{activity.start_at}}</td>
                                         <td>{{activity.title}}</td>
                                         <td>{{activity.sport}}</td>
-                                        <td>{{new Date(activity.duration * 1000).toISOString().substr(11, 8) }}</td>
                                         <td>{{zeroPad(activity.distance/1000,4)}}</td>
+                                        <td>{{new Date(activity.duration * 1000).toISOString().substr(11, 8) }}</td>
                                         <td>{{PaceMKm(activity.avrpace)}}</td>
+                                        <td>{{new Date(activity.movingtime * 1000).toISOString().substr(11, 8)}}</td>
+
+
                                     </tr>
                                 </tbody>
                             </table>

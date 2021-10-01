@@ -14,11 +14,13 @@ class GPXStart extends phpGPX
     private $gpx;
     private $file;
     private $track;
+
     /**
      * @param string $filename
      */
     public function __construct($filename)
     {
+
         $this->filename = $filename;
         $this->gpx = new phpGPX();
         $this->file = $this->gpx->load($filename);
@@ -72,4 +74,60 @@ class GPXStart extends phpGPX
     public function GetStat():Stats{
         return $this->track->stats;
     }
+
+
+    public function SetSmooth(bool $smooth)
+    {
+        self::$APPLY_DISTANCE_SMOOTHING = $smooth;
+        $this->GetTrack()->recalculateStats();
+    }
+    // время в движении
+    public function MovingTime():int
+    {
+        $timemove = 0;
+        $points = $this->track->getPoints();
+        $pointCount = count($points);
+        $lastConsideredPoint = null;
+        for ($p = 0; $p < $pointCount; $p++) {
+            $curPoint = $points[$p];
+
+            // skip the first point
+            if ($p === 0) {
+                $lastConsideredPoint = $curPoint;
+                continue;
+            }
+            // calculate the delta from current point to last considered point
+            //$curPoint->difference = GeoHelper::getDistance($lastConsideredPoint, $curPoint);
+            $timedifference = $curPoint->time->getTimestamp() - $lastConsideredPoint->time->getTimestamp();
+            $pace = 0;
+            if($curPoint->difference>0){
+                $pace = $timedifference/$curPoint->difference;
+                if($pace < 3.0){
+                    // echo $pace.PHP_EOL;
+                    $timemove = $timemove + $timedifference;
+                }
+            }
+
+            $lastConsideredPoint = $curPoint;
+        }
+        return $timemove;
+    }
+
+    public static function secondsToTime($seconds_time)
+    {
+        if ($seconds_time < 24 * 60 * 60) {
+            return gmdate('H:i:s', $seconds_time);
+        } else {
+            $hours = floor($seconds_time / 3600);
+            $minutes = floor(($seconds_time - $hours * 3600) / 60);
+            $seconds = floor($seconds_time - ($hours * 3600) - ($minutes * 60));
+            return "$hours:$minutes:$seconds";
+        }
+    }
+
+    public function AveragePaceMT()
+    {
+        return ($this->MovingTime()*1000)/$this->GetStat()->distance;
+    }
+
 }

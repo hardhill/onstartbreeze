@@ -25,6 +25,7 @@ class ActivityController extends Controller
             $activity->creator = $gpx->GetFile()->creator;
             $activity->start_at = $gpx->GetTimeStart();
             $activity->duration = $gpx->GetStat()->duration;
+            $activity->movingtime = $gpx->MovingTime();
             $activity->distance = $gpx->GetStat()->distance;
             $activity->avrspeed = $gpx->GetStat()->averageSpeed;
             $activity->avrpace = $gpx->GetStat()->averagePace;
