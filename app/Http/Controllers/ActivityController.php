@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\GPXStart;
 use App\Models\Activity;
 
+use App\Models\Category;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,7 +22,7 @@ class ActivityController extends Controller
             $activity = new Activity();
             $activity->trackid = $gpx->GetIdTrack();
             $activity->title = $gpx->GetTitle();
-            $activity->category_id = 1;
+            $activity->category_id = Category::getValue($gpx->GetTrack()->type);
             $activity->creator = $gpx->GetFile()->creator;
             $activity->start_at = $gpx->GetTimeStart();
             $activity->duration = $gpx->GetStat()->duration;

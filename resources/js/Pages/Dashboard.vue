@@ -34,6 +34,7 @@
                                         <td>Duration(hms)</td>
                                         <td>Pace(m/km)</td>
                                         <td>Moving time(hms)</td>
+                                        <td>Moving pace(m/km)</td>
 
 
                                     </tr>
@@ -48,7 +49,7 @@
                                         <td>{{new Date(activity.duration * 1000).toISOString().substr(11, 8) }}</td>
                                         <td>{{PaceMKm(activity.avrpace)}}</td>
                                         <td>{{new Date(activity.movingtime * 1000).toISOString().substr(11, 8)}}</td>
-
+                                        <td>{{PaceMKm(MovingPace(activity))}}</td>
 
                                     </tr>
                                 </tbody>
@@ -64,7 +65,7 @@
 <script>
 import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue'
 import { Head } from '@inertiajs/inertia-vue3';
-import {ref} from 'vue'
+import {computed, ref} from 'vue'
 import OsLinkButton from '@/Components/ui/OsLinkButton.vue'
 import OsButton from "@/Components/ui/OsButton";
 import {Inertia} from "@inertiajs/inertia";
@@ -81,6 +82,7 @@ export default {
     setup(props){
         console.log(props.activities)
         const gpxInput = ref(null)
+
         const selectFile = ()=>{
             console.log('load file')
             gpxInput.value.click()
@@ -108,7 +110,10 @@ export default {
 
             return s
         }
-        return {selectFile, gpxInput, sendFile, zeroPad, PaceMKm}
+        const MovingPace = (activity)=>{
+            return ((activity.movingtime * 1000)/activity.distance)
+        }
+        return {selectFile, gpxInput, sendFile, zeroPad, PaceMKm, MovingPace}
     }
 }
 </script>
@@ -120,5 +125,18 @@ export default {
     z-index: -1;
     width: 0.1px;
     height: 0.1px;
+}
+
+thead>tr{
+    background-color: #e2e8f0;
+    border-bottom: #4a5568 1px solid;
+    font-weight: bold;
+
+}
+thead>tr>td{
+    padding: .5rem 1rem .5rem 0;
+}
+tbody>tr>td{
+    padding: 0.5rem 1rem .5rem 0;
 }
 </style>
