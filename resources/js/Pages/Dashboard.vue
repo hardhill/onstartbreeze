@@ -35,7 +35,7 @@
                                         <td>Pace(m/km)</td>
                                         <td>Moving time(hms)</td>
                                         <td>Moving pace(m/km)</td>
-
+                                        <td>Hart rate(move)</td>
 
                                     </tr>
                                 </thead>
@@ -50,6 +50,7 @@
                                         <td>{{PaceMKm(activity.avrpace)}}</td>
                                         <td>{{new Date(activity.movingtime * 1000).toISOString().substr(11, 8)}}</td>
                                         <td>{{PaceMKm(MovingPace(activity))}}</td>
+                                        <td>{{activity.avrhrmmt}}</td>
 
                                     </tr>
                                 </tbody>
@@ -134,9 +135,9 @@ thead>tr{
 
 }
 thead>tr>td{
-    padding: .5rem 1rem .5rem 0;
+    padding: .5rem 1rem .5rem 1rem;
 }
 tbody>tr>td{
-    padding: 0.5rem 1rem .5rem 0;
+    padding: 0.5rem 1rem .5rem 1rem;
 }
 </style>

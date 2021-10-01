@@ -34,6 +34,7 @@ class ActivityController extends Controller
             $activity->maxaltitude = $gpx->GetStat()->maxAltitude;
             $activity->elevationgain = $gpx->GetStat()->cumulativeElevationGain;
             $activity->elevationloss = $gpx->GetStat()->cumulativeElevationLoss;
+            $activity->avrhrmmt = floor($gpx->AverageHRM_MT());
             $activity->started_at = $gpx->GetStat()->startedAt;
             $activity->finished_at = $gpx->GetStat()->finishedAt;
             $activity->user_id = Auth::id();

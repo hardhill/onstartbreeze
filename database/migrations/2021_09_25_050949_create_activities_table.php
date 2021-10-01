@@ -28,6 +28,7 @@ class CreateActivitiesTable extends Migration
             $table->integer('maxaltitude')->nullable(true);
             $table->integer('elevationgain')->nullable(true);
             $table->integer('elevationloss')->nullable(true);
+            $table->integer('avrhrmmt')->nullable(true);
             $table->dateTime('started_at')->nullable(true);
             $table->dateTime('finished_at')->nullable(true);
             $table->string('creator',150);

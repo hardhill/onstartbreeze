@@ -14,6 +14,7 @@ class GPXStart extends phpGPX
     private $gpx;
     private $file;
     private $track;
+    private $hartrates = [];
 
     /**
      * @param string $filename
@@ -88,6 +89,7 @@ class GPXStart extends phpGPX
         $points = $this->track->getPoints();
         $pointCount = count($points);
         $lastConsideredPoint = null;
+        $this->hartrates = [];
         for ($p = 0; $p < $pointCount; $p++) {
             $curPoint = $points[$p];
 
@@ -104,12 +106,14 @@ class GPXStart extends phpGPX
                 $pace = $timedifference/$curPoint->difference;
                 if($pace < 3.0){
                     // echo $pace.PHP_EOL;
+                    $this->hartrates[] = $curPoint->extensions->trackPointExtension->hr;
                     $timemove = $timemove + $timedifference;
                 }
             }
 
             $lastConsideredPoint = $curPoint;
         }
+
         return $timemove;
     }
 
@@ -129,5 +133,12 @@ class GPXStart extends phpGPX
     {
         return ($this->MovingTime()*1000)/$this->GetStat()->distance;
     }
-
+    // средее сердечное сокращение во время движения
+    public function AverageHRM_MT(){
+        $this->hartrates = array_filter($this->hartrates);
+        if(count($this->hartrates)) {
+            return array_sum($this->hartrates)/count($this->hartrates);
+        }
+        return false;
+    }
 }
